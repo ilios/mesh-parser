@@ -328,13 +328,13 @@ class MeshXMLHandler
                 sql += "NULL";
             }
 
-            sql += ")";
+            sql += ", NULL, NULL)" + this.endingOnDUplicateSQLForTable();
 
             this.writeSQLToFile(sql);
 
            // mesh_previous_indexing
             for (String previousIndexing : descriptor.getPreviousIndexings()) {
-                sql = this.startingInsertSQLForTable("mesh_previous_indexing")
+                sql = this.startingInsertIgnoreSQLForTable("mesh_previous_indexing")
                         + descriptor.getUniqueId() + "', '" + this.escapedString(previousIndexing)
                         + "')";
 
@@ -343,7 +343,7 @@ class MeshXMLHandler
 
            // mesh_tree_x_descriptor
             for (String treeNumber : descriptor.getTreeNumbers()) {
-                sql = this.startingInsertSQLForTable("mesh_tree_x_descriptor") + treeNumber
+                sql = this.startingInsertIgnoreSQLForTable("mesh_tree_x_descriptor") + treeNumber
                         + "', '" + descriptor.getUniqueId() + "')";
 
                 this.writeSQLToFile(sql);
@@ -353,14 +353,14 @@ class MeshXMLHandler
             // mesh_descriptor_x_qualifier
              for (Qualifier qualifier : descriptor.getAllowableQualifiers()) {
                  sql = this.startingInsertSQLForTable("mesh_qualifier") + qualifier.getUniqueId()
-                             + "', '" + this.escapedString(qualifier.getName()) + "')";
+                             + "', '" + this.escapedString(qualifier.getName()) + "', NULL, NULL)"
+                             + this.endingOnDUplicateSQLForTable();
 
                  this.writeSQLToFile(sql);
 
 
-                 sql = this.startingInsertSQLForTable("mesh_descriptor_x_qualifier")
+                 sql = this.startingInsertIgnoreSQLForTable("mesh_descriptor_x_qualifier")
                              + descriptor.getUniqueId() + "', '" + qualifier.getUniqueId() + "')";
-
                  this.writeSQLToFile(sql);
              }
 
@@ -394,7 +394,9 @@ class MeshXMLHandler
                     sql += "NULL";
                 }
 
-                sql += ")";
+                sql += ", NULL, NULL)";
+
+                sql += this.endingOnDUplicateSQLForTable();
 
                 this.writeSQLToFile(sql);
 
@@ -416,12 +418,14 @@ class MeshXMLHandler
                     sql += this.appendingSQLForBoolean(term.isPermuted());
                     sql += this.appendingSQLForBoolean(term.isPrint());
 
-                    sql += ")";
+                    sql += ", NULL, NULL)";
+
+                    sql += this.endingOnDUplicateSQLForTable();
 
                     this.writeSQLToFile(sql);
 
 
-                    sql = this.startingInsertSQLForTable("mesh_concept_x_term")
+                    sql = this.startingInsertIgnoreSQLForTable("mesh_concept_x_term")
                                 + concept.getUniqueId() + "', '" + term.getUniqueId() + "')";
 
                     this.writeSQLToFile(sql);
@@ -431,12 +435,13 @@ class MeshXMLHandler
                // mesh_concept_x_semantic_type
                 for (SemanticType type : concept.getSemanticTypes()) {
                     sql = this.startingInsertSQLForTable("mesh_semantic_type") + type.getUniqueId()
-                                + "', '" + this.escapedString(type.getName()) + "')";
+                                + "', '" + this.escapedString(type.getName()) + "', NULL, NULL)"
+                                + this.endingOnDUplicateSQLForTable();
 
                     this.writeSQLToFile(sql);
 
 
-                    sql = this.startingInsertSQLForTable("mesh_concept_x_semantic_type")
+                    sql = this.startingInsertIgnoreSQLForTable("mesh_concept_x_semantic_type")
                                 + concept.getUniqueId() + "', '" + type.getUniqueId() + "')";
 
                     this.writeSQLToFile(sql);
@@ -444,7 +449,7 @@ class MeshXMLHandler
 
 
                // mesh_descriptor_x_concept
-                sql = this.startingInsertSQLForTable("mesh_descriptor_x_concept")
+                sql = this.startingInsertIgnoreSQLForTable("mesh_descriptor_x_concept")
                         + concept.getUniqueId() + "', '" + descriptor.getUniqueId() + "')";
 
                 this.writeSQLToFile(sql);
@@ -454,7 +459,7 @@ class MeshXMLHandler
                          + descriptor.getName());
         }
         catch (Exception e) {
-            LOGGER.severe("!! FAILED TO INSERT DESCRIPTOR: " + descriptor.getUniqueId());
+            LOGGER.severe("!! FAILED TO WRITE DESCRIPTOR: " + descriptor.getUniqueId());
         }
     }
 
@@ -462,8 +467,16 @@ class MeshXMLHandler
         return str.replaceAll("'", "\\\\'");
     }
 
-    protected String startingInsertSQLForTable (String tableName) {
+    protected String startingInsertIgnoreSQLForTable (String tableName) {
         return "INSERT IGNORE INTO " + tableName + " VALUES ('";
+    }
+
+    protected String startingInsertSQLForTable (String tableName) {
+        return "INSERT INTO " + tableName + " VALUES ('";
+    }
+
+    protected String endingOnDUplicateSQLForTable () {
+        return " ON DUPLICATE KEY UPDATE created_at = created_at, updated_at = CURRENT_TIMESTAMP";
     }
 
     protected String appendingSQLForBoolean (boolean flag) {
