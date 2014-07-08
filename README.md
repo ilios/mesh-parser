@@ -2,49 +2,34 @@
 
 ## Description
 
-Extracts MeSH descriptors and associated data from a given XML file into a MySQL database.
+Extracts MeSH descriptors and associated data from a given XML file into a SQL file
+which can be inserted into a MySQL database.
 
-## Installation
+### Download Executable
+Go to https://github.com/ilios/mesh-parser/releases and download the latest JAR file.
 
-### Setup Database Tables
-
-Log in to your database-server and create a new database.
-
-```mysql
-CREATE DATABASE `mesh_universe`;
-USE `mesh_universe`;
-```
-
-Then `SOURCE` the `mesh_tables.sql` script into it. This will create the various `mesh_*` tables.
-
-```mysql
-SOURCE resources/db/schema/mesh_tables.sql;
-```
-
-### Build Executable
-
+#### Or Build Executable
+If you want to build the mesh parser yourself then:
 Run `mvn package` in the project's root directory.
-This will generate an executable jar file `mesh_parser-1.0.0-SNAPSHOT-jar-with-dependencies.jar` in the `target` sub-directory.
+This will generate an executable jar file `mesh_parser-1.1.0-jar-with-dependencies.jar` in the `target` sub-directory.
 
 ## Usage
 
-Run the generated jar file whilst providing a path to the MeSH descriptor file, and database connection parameters.
+Run the jar file whilst providing a path to the MeSH descriptor file and the destination for the output SQL
 
 ```bash
-$ java -jar target/mesh_parser-1.0.0-SNAPSHOT-jar-with-dependencies.jar <mesh-descriptor-file> <db-host> <db-name> <db-user> <db-password>
+$ java -jar mesh_parser-1.1.0-jar-with-dependencies.jar <mesh-descriptor-file> <sql-output-file>
 ```
-This will parse the given MeSH descriptor file and import its data into the specified database.
+This will parse the given MeSH descriptor file and create the SQL file.
+
+If you wish to test the SQL file an example database can be found in resources/db/schema/mesh_tables.sql
 
 Input parameters:
 
-* mesh-descriptor-file ... location of the MeSH descriptor XML file
-* db-host ... database-server hostname or IP-address
-* db-name ... database name
-* db-user ... db username
-* db-password ... db user password
+* mesh-descriptor-file ... location of the MeSHf descriptor XML file
+* sql-output-file      ... location where the new SQL file should be written
 
 ## Caveats
 
 * The DTD file corresponding to the MeSH descriptor file _must_ be located in the same directory as the descriptor file.
-* Currently, there is no way to specify a database-server port, so the default-port 3306 is always assumed.
-
+* The sql-output-file should not exist before running the script, it will be created.
