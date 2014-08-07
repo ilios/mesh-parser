@@ -26,7 +26,8 @@ public class MeshParser {
         this.xmlHandler = new MeshXMLHandler(out);
 
         parser.parse(f, this.xmlHandler);
-
+        
+        out.flush();
         out.close();
     }
 
