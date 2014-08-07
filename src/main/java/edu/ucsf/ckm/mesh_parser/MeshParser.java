@@ -19,7 +19,7 @@ public class MeshParser {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
         File f = new File(meshXMLFile);
-        BufferedWriter out = new BufferedWriter(new FileWriter(outputFileName, true));
+        BufferedWriter out = new BufferedWriter(new FileWriter(outputFileName));
 
         this.xmlParser = parser.getXMLReader();
 
