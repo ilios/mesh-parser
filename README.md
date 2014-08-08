@@ -26,7 +26,7 @@ If you wish to test the SQL file an example database can be found in resources/d
 
 Input parameters:
 
-* mesh-descriptor-file ... location of the MeSHf descriptor XML file
+* mesh-descriptor-file ... location of the MeSH descriptor XML file
 * sql-output-file      ... location where the new SQL file should be written
 
 ## Caveats
