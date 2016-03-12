@@ -1,0 +1,29 @@
+{
+  "name": "ilios/mesh-parser",
+  "type": "library",
+  "description": "PHP library for extracting MeSH descriptors from XML.",
+  "keywords": [
+    "Ilios",
+    "MeSH"
+  ],
+  "homepage": "http://iliosproject.org/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Stefan Topfstedt",
+      "email": "stefan.topfstedt@ucsf.edu",
+      "role": "developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  }
+}
