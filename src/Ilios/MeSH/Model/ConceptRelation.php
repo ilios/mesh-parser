@@ -54,4 +54,3 @@ class ConceptRelation
         $this->concept2Ui = $concept2Ui;
     }
 }
-

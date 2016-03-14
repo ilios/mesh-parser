@@ -19,11 +19,15 @@
     "php": ">=5.5.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.7.0"
+    "phpunit/phpunit": "~4.7.0",
+    "squizlabs/php_codesniffer": "^2.5"
   },
   "autoload": {
     "psr-4": {
       "": "src/"
     }
+  },
+  "config": {
+    "bin-dir": "bin"
   }
 }

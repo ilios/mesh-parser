@@ -124,12 +124,12 @@ class Parser
         $descriptors = new DescriptorSet();
 
         $reader = $this->reader;
-        if (! $reader->open($uri)) {
-            throw new \Exception('XML reader failed to open ' . $uri . '.');
+        if (!$reader->open($uri)) {
+            throw new \Exception('XML reader failed to open '.$uri.'.');
         };
 
         // start reading the XML File.
-        while($reader->read()) {
+        while ($reader->read()) {
             $nodeType = $reader->nodeType;
             if (\XMLReader::ELEMENT === $nodeType) {
                 switch ($reader->name) {
@@ -209,7 +209,7 @@ class Parser
                         break;
                     case self::DESCRIPTOR_NAME:
                         $name = $this->getStringNodeContents($reader->expand());
-                        if ($currentDescriptorReference){
+                        if ($currentDescriptorReference) {
                             $currentDescriptorReference->setName($name);
                         } else {
                             $currentDescriptor->setName($name);
@@ -226,7 +226,7 @@ class Parser
                         break;
                     case self::DESCRIPTOR_UI:
                         $ui = $this->getNodeContents($reader);
-                        if ($currentDescriptorReference){
+                        if ($currentDescriptorReference) {
                             $currentDescriptorReference->setUi($ui);
                         } else {
                             $currentDescriptor->setUi($ui);
@@ -305,13 +305,13 @@ class Parser
                         $name = $this->getStringNodeContents($reader->expand());
                         $currentTerm->setName($name);
                         $currentTerm->setConceptPreferred(
-                          'Y' === $reader->getAttribute(self::CONCEPT_PREFERRED_TERM_YN)
+                            'Y' === $reader->getAttribute(self::CONCEPT_PREFERRED_TERM_YN)
                         );
                         $currentTerm->setPermuted(
-                          'Y' === $reader->getAttribute(self::IS_PERMUTED_TERM_YN)
+                            'Y' === $reader->getAttribute(self::IS_PERMUTED_TERM_YN)
                         );
                         $currentTerm->setRecordPreferred(
-                          'Y' === $reader->getAttribute(self::RECORD_PREFERRED_TERM_YN)
+                            'Y' === $reader->getAttribute(self::RECORD_PREFERRED_TERM_YN)
                         );
                         $currentTerm->setLexicalTag($reader->getAttribute(self::LEXICAL_TAG));
                         break;
@@ -341,7 +341,7 @@ class Parser
                         break;
                 }
             } elseif (\XMLReader::END_ELEMENT === $nodeType) {
-                switch($reader->name) {
+                switch ($reader->name) {
                     case self::ALLOWABLE_QUALIFIER:
                         $currentAllowableQualifier->setQualifierReference($currentQualifierReference);
                         $currentDescriptor->addAllowableQualifier($currentAllowableQualifier);
@@ -392,6 +392,7 @@ class Parser
             }
         }
         $reader->close();
+
         return $descriptors;
     }
 
@@ -405,7 +406,7 @@ class Parser
         $children = $node->childNodes;
         $ymd = [];
         foreach ($children as $child) {
-            switch($child->nodeName) {
+            switch ($child->nodeName) {
                 case self::YEAR:
                     $ymd['year'] = (int) $child->nodeValue;
                     break;
@@ -419,13 +420,14 @@ class Parser
         }
         if (3 !== count($ymd)) {
             throw new \Exception(
-              sprintf('Could not retrieve Year/Month/Day info from node "%".', $node->nodeName)
+                sprintf('Could not retrieve Year/Month/Day info from node "%".', $node->nodeName)
             );
         }
         $dt = new \DateTime();
         $dt->setTimezone(new \DateTimeZone('UTC'));
-        $dt->setTime(0, 0 ,0);
+        $dt->setTime(0, 0, 0);
         $dt->setDate($ymd['year'], $ymd['month'], $ymd['day']);
+
         return $dt;
     }
 
@@ -449,6 +451,7 @@ class Parser
                 sprintf('Node "%s" does not contain a child node of type "String".', $node->nodeName)
             );
         }
+
         return $contents;
     }
 
