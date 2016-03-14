@@ -28,6 +28,11 @@
       "": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "": "tests/"
+    }
+  },
   "config": {
     "bin-dir": "bin"
   }
