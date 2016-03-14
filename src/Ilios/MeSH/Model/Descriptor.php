@@ -95,14 +95,6 @@ class Descriptor extends Reference
     protected $concepts = [];
 
     /**
-     * @param string $class
-     */
-    public function setClass($class)
-    {
-        $this->class = $class;
-    }
-
-    /**
      * @return string
      */
     public function getClass()
@@ -111,11 +103,11 @@ class Descriptor extends Reference
     }
 
     /**
-     * @param \DateTime $date
+     * @param string $class
      */
-    public function setDateCreated(\DateTime $date)
+    public function setClass($class)
     {
-        $this->dateCreated = $date;
+        $this->class = $class;
     }
 
     /**
@@ -129,9 +121,9 @@ class Descriptor extends Reference
     /**
      * @param \DateTime $date
      */
-    public function setDateRevised(\DateTime $date)
+    public function setDateCreated(\DateTime $date)
     {
-        $this->dateRevised = $date;
+        $this->dateCreated = $date;
     }
 
     /**
@@ -143,11 +135,11 @@ class Descriptor extends Reference
     }
 
     /**
-     * @param \DateTime $date|null
+     * @param \DateTime $date
      */
-    public function setDateEstablished(\DateTime $date)
+    public function setDateRevised(\DateTime $date)
     {
-        $this->dateEstablished = $date;
+        $this->dateRevised = $date;
     }
 
     /**
@@ -156,6 +148,14 @@ class Descriptor extends Reference
     public function getDateEstablished()
     {
         return $this->dateEstablished;
+    }
+
+    /**
+     * @param \DateTime $date |null
+     */
+    public function setDateEstablished(\DateTime $date)
+    {
+        $this->dateEstablished = $date;
     }
 
     /**
@@ -366,4 +366,3 @@ class Descriptor extends Reference
         $this->concepts[] = $concept;
     }
 }
-

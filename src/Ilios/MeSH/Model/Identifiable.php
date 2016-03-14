@@ -14,18 +14,18 @@ trait Identifiable
     protected $ui;
 
     /**
-     * @param $ui
-     */
-    public function setUi($ui)
-    {
-        $this->ui = $ui;
-    }
-
-    /**
      * @return string
      */
     public function getUi()
     {
         return $this->ui;
+    }
+
+    /**
+     * @param $ui
+     */
+    public function setUi($ui)
+    {
+        $this->ui = $ui;
     }
 }

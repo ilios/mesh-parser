@@ -19,19 +19,19 @@ class DescriptorSet
     protected $languageCode;
 
     /**
-     * @param string $code
-     */
-    public function setLanguageCode($code)
-    {
-        $this->languageCode = $code;
-    }
-
-    /**
      * @return string
      */
     public function getLanguageCode()
     {
         return $this->languageCode;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setLanguageCode($code)
+    {
+        $this->languageCode = $code;
     }
 
     /**
@@ -71,6 +71,7 @@ class DescriptorSet
         if (array_key_exists($ui, $this->descriptors)) {
             return $this->descriptors[$ui];
         }
+
         return false;
     }
 }

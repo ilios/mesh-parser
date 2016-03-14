@@ -195,5 +195,4 @@ class Concept extends Reference
     {
         $this->terms[] = $term;
     }
-
 }

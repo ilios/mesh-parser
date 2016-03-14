@@ -214,5 +214,4 @@ class Term extends Reference
     {
         $this->dateCreated = $dateCreated;
     }
-
 }
