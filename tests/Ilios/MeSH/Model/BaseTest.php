@@ -132,4 +132,21 @@ abstract class BaseTest extends PHPUnit_Framework_TestCase
                 throw new \Exception("No values for type {$type}");
         }
     }
+
+    /**
+     * A generic test for entity setters.
+     *
+     * @param string $property
+     * @param string $type
+     */
+    protected function basicSetTest($property, $type)
+    {
+        $setMethod = $this->getSetMethodForProperty($property);
+        $getMethod = $this->getGetMethodForProperty($property);
+        $this->assertTrue(method_exists($this->object, $setMethod), "Method {$setMethod} missing");
+        $this->assertTrue(method_exists($this->object, $getMethod), "Method {$getMethod} missing");
+        $expected = $this->getValueForType($type);
+        $this->object->$setMethod($expected);
+        $this->assertSame($expected, $this->object->$getMethod());
+    }
 }
