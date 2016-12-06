@@ -16,12 +16,12 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0"
+    "php": "~5.6|~7.0"
   },
   "require-dev": {
     "mockery/mockery": "@stable",
-    "phpunit/phpunit": "4.8.*",
-    "squizlabs/php_codesniffer": "2.*",
+    "phpunit/phpunit": "5.6.*",
+    "squizlabs/php_codesniffer": "@stable",
     "fzaninotto/faker": "^1.5"
   },
   "autoload": {
