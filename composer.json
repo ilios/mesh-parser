@@ -19,12 +19,19 @@
     "php": ">=5.5.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.7.0",
-    "squizlabs/php_codesniffer": "^2.5"
+    "mockery/mockery": "@stable",
+    "phpunit/phpunit": "4.8.*",
+    "squizlabs/php_codesniffer": "2.*",
+    "fzaninotto/faker": "^1.5"
   },
   "autoload": {
     "psr-4": {
       "": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "": "tests/"
     }
   },
   "config": {

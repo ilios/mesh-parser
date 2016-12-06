@@ -3,7 +3,7 @@
 namespace Ilios\MeSH\Model;
 
 /**
- * Class Identifiable
+ * Trait Identifiable
  * @package Ilios\MeSH\Model
  */
 trait Identifiable
