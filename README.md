@@ -3,7 +3,7 @@
 This PHP code library provides tools for extracting [Medical Subject Headings](https://www.nlm.nih.gov/mesh/) 
 (MeSH) descriptors and associated data from a given XML file into an object representation.
 
-It expects its input to be provided in the 2016 version of the MeSH Descriptors XML format.
+It expects its input to be compliant with the 2016 or 2017 [MeSH DTDs](https://www.nlm.nih.gov/databases/dtd/).
 
 ## Installation
 
