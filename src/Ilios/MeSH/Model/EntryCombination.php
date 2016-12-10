@@ -81,7 +81,7 @@ class EntryCombination
     }
 
     /**
-     * @return string
+     * @return Reference
      */
     public function getQualifierOut()
     {
