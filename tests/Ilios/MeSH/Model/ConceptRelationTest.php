@@ -32,8 +32,8 @@ class ConceptRelationTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\ConceptRelation::getName
-     * @covers Ilios\MeSH\Model\ConceptRelation::setName
+     * @covers \Ilios\MeSH\Model\ConceptRelation::getName
+     * @covers \Ilios\MeSH\Model\ConceptRelation::setName
      */
     public function testGetSetName()
     {
@@ -41,8 +41,8 @@ class ConceptRelationTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\ConceptRelation::getConcept1Ui
-     * @covers Ilios\MeSH\Model\ConceptRelation::setConcept1Ui
+     * @covers \Ilios\MeSH\Model\ConceptRelation::getConcept1Ui
+     * @covers \Ilios\MeSH\Model\ConceptRelation::setConcept1Ui
      */
     public function testGetSetConcept1Ui()
     {
@@ -50,8 +50,8 @@ class ConceptRelationTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\ConceptRelation::getConcept2Ui
-     * @covers Ilios\MeSH\Model\ConceptRelation::setConcept2Ui
+     * @covers \Ilios\MeSH\Model\ConceptRelation::getConcept2Ui
+     * @covers \Ilios\MeSH\Model\ConceptRelation::setConcept2Ui
      */
     public function testGetSetConcept2Ui()
     {

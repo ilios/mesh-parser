@@ -2,6 +2,10 @@
 
 namespace Ilios\MeSH;
 
+/**
+ * Class ParserTest
+ * @package Ilios\MeSH
+ */
 class ParserTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -26,7 +30,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Parser:test
+     * @covers \Ilios\MeSH\Parser::parse
      */
     public function testForInvalidInputUriFailure()
     {
@@ -39,7 +43,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Parser:test
+     * @covers \Ilios\MeSH\Parser::parse
      */
     public function testForIncompleteDateFailure()
     {
@@ -68,7 +72,7 @@ EOL;
     }
 
     /**
-     * @covers Parser:test
+     * @covers \Ilios\MeSH\Parser::parse
      */
     public function testForInvalidStringNodeFailure()
     {
@@ -99,7 +103,7 @@ EOL;
     }
 
     /**
-     * @covers Parser:test
+     * @covers \Ilios\MeSH\Parser::parse
      */
     public function testParse()
     {

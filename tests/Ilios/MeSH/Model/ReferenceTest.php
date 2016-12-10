@@ -32,8 +32,8 @@ class ReferenceTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Reference::getUi
-     * @covers Ilios\MeSH\Model\Reference::setUi
+     * @covers \Ilios\MeSH\Model\Reference::getUi
+     * @covers \Ilios\MeSH\Model\Reference::setUi
      */
     public function testGetSetUi()
     {
@@ -41,8 +41,8 @@ class ReferenceTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Reference::getName
-     * @covers Ilios\MeSH\Model\Reference::setName
+     * @covers \Ilios\MeSH\Model\Reference::getName
+     * @covers \Ilios\MeSH\Model\Reference::setName
      */
     public function testGetSetName()
     {

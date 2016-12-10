@@ -32,8 +32,8 @@ class AllowableQualifierTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\AllowableQualifier::getQualifierReference
-     * @covers Ilios\MeSH\Model\AllowableQualifier::setQualifierReference
+     * @covers \Ilios\MeSH\Model\AllowableQualifier::getQualifierReference
+     * @covers \Ilios\MeSH\Model\AllowableQualifier::setQualifierReference
      */
     public function testGetSetQualifierReference()
     {
@@ -41,8 +41,8 @@ class AllowableQualifierTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\AllowableQualifier::getAbbreviation
-     * @covers Ilios\MeSH\Model\AllowableQualifier::setAbbreviation
+     * @covers \Ilios\MeSH\Model\AllowableQualifier::getAbbreviation
+     * @covers \Ilios\MeSH\Model\AllowableQualifier::setAbbreviation
      */
     public function testGetSetAbbreviation()
     {

@@ -32,7 +32,7 @@ class ConceptTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Concept::__construct
+     * @covers \Ilios\MeSH\Model\Concept::__construct
      */
     public function testConstructor()
     {
@@ -41,8 +41,8 @@ class ConceptTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Concept::isPreferred
-     * @covers Ilios\MeSH\Model\Concept::setPreferred
+     * @covers \Ilios\MeSH\Model\Concept::isPreferred
+     * @covers \Ilios\MeSH\Model\Concept::setPreferred
      */
     public function testIsSetPreferred()
     {
@@ -50,8 +50,8 @@ class ConceptTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Concept::getCasn1Name
-     * @covers Ilios\MeSH\Model\Concept::setCasn1Name
+     * @covers \Ilios\MeSH\Model\Concept::getCasn1Name
+     * @covers \Ilios\MeSH\Model\Concept::setCasn1Name
      */
     public function testGetSetCasn1Name()
     {
@@ -59,8 +59,8 @@ class ConceptTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Concept::getRegistryNumber
-     * @covers Ilios\MeSH\Model\Concept::setRegistryNumber
+     * @covers \Ilios\MeSH\Model\Concept::getRegistryNumber
+     * @covers \Ilios\MeSH\Model\Concept::setRegistryNumber
      */
     public function testGetSetRegistryNumber()
     {
@@ -68,8 +68,8 @@ class ConceptTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Concept::getScopeNote
-     * @covers Ilios\MeSH\Model\Concept::setScopeNote
+     * @covers \Ilios\MeSH\Model\Concept::getScopeNote
+     * @covers \Ilios\MeSH\Model\Concept::setScopeNote
      */
     public function testGetSetScopeNote()
     {
@@ -77,8 +77,8 @@ class ConceptTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Concept::getTranslatorsEnglishScopeNote
-     * @covers Ilios\MeSH\Model\Concept::setTranslatorsEnglishScopeNote
+     * @covers \Ilios\MeSH\Model\Concept::getTranslatorsEnglishScopeNote
+     * @covers \Ilios\MeSH\Model\Concept::setTranslatorsEnglishScopeNote
      */
     public function testGetSetTranslatorsEnglishScopeNote()
     {
@@ -86,8 +86,8 @@ class ConceptTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Concept::getTranslatorsScopeNote
-     * @covers Ilios\MeSH\Model\Concept::setTranslatorsScopeNote
+     * @covers \Ilios\MeSH\Model\Concept::getTranslatorsScopeNote
+     * @covers \Ilios\MeSH\Model\Concept::setTranslatorsScopeNote
      */
     public function testGetSetTranslatorsScopeNote()
     {
@@ -95,8 +95,8 @@ class ConceptTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Concept::addRelatedRegistryNumber
-     * @covers Ilios\MeSH\Model\Concept::getRelatedRegistryNumbers
+     * @covers \Ilios\MeSH\Model\Concept::addRelatedRegistryNumber
+     * @covers \Ilios\MeSH\Model\Concept::getRelatedRegistryNumbers
      */
     public function testAddGetRelatedRegistryNumbers()
     {
@@ -104,8 +104,8 @@ class ConceptTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Concept::addConceptRelation
-     * @covers Ilios\MeSH\Model\Concept::getConceptRelations
+     * @covers \Ilios\MeSH\Model\Concept::addConceptRelation
+     * @covers \Ilios\MeSH\Model\Concept::getConceptRelations
      */
     public function testAddGetConceptRelations()
     {
@@ -113,8 +113,8 @@ class ConceptTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Concept::addTerm
-     * @covers Ilios\MeSH\Model\Concept::getTerms
+     * @covers \Ilios\MeSH\Model\Concept::addTerm
+     * @covers \Ilios\MeSH\Model\Concept::getTerms
      */
     public function testAddGetTerms()
     {

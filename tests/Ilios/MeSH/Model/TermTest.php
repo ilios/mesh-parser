@@ -23,7 +23,7 @@ class TermTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Term::__construct
+     * @covers \Ilios\MeSH\Model\Term::__construct
      */
     public function testConstructor()
     {
@@ -31,8 +31,8 @@ class TermTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Term::isPermuted
-     * @covers Ilios\MeSH\Model\Term::setPermuted
+     * @covers \Ilios\MeSH\Model\Term::isPermuted
+     * @covers \Ilios\MeSH\Model\Term::setPermuted
      */
     public function testIsSetPermuted()
     {
@@ -40,8 +40,8 @@ class TermTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Term::isConceptPreferred
-     * @covers Ilios\MeSH\Model\Term::setConceptPreferred
+     * @covers \Ilios\MeSH\Model\Term::isConceptPreferred
+     * @covers \Ilios\MeSH\Model\Term::setConceptPreferred
      */
     public function testIsSetConceptPreferred()
     {
@@ -49,8 +49,8 @@ class TermTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Term::isRecordPreferred
-     * @covers Ilios\MeSH\Model\Term::setRecordPreferred
+     * @covers \Ilios\MeSH\Model\Term::isRecordPreferred
+     * @covers \Ilios\MeSH\Model\Term::setRecordPreferred
      */
     public function testIsSetRecordPreferred()
     {
@@ -58,8 +58,8 @@ class TermTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Term::getLexicalTag
-     * @covers Ilios\MeSH\Model\Term::setLexicalTag
+     * @covers \Ilios\MeSH\Model\Term::getLexicalTag
+     * @covers \Ilios\MeSH\Model\Term::setLexicalTag
      */
     public function testGetSetLexicalTag()
     {
@@ -67,8 +67,8 @@ class TermTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Term::getAbbreviation
-     * @covers Ilios\MeSH\Model\Term::setAbbreviation
+     * @covers \Ilios\MeSH\Model\Term::getAbbreviation
+     * @covers \Ilios\MeSH\Model\Term::setAbbreviation
      */
     public function testGetSetAbbreviation()
     {
@@ -76,8 +76,8 @@ class TermTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Term::getSortVersion
-     * @covers Ilios\MeSH\Model\Term::setSortVersion
+     * @covers \Ilios\MeSH\Model\Term::getSortVersion
+     * @covers \Ilios\MeSH\Model\Term::setSortVersion
      */
     public function testGetSetSortVersion()
     {
@@ -85,8 +85,8 @@ class TermTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Term::getEntryVersion
-     * @covers Ilios\MeSH\Model\Term::setEntryVersion
+     * @covers \Ilios\MeSH\Model\Term::getEntryVersion
+     * @covers \Ilios\MeSH\Model\Term::setEntryVersion
      */
     public function testGetSetEntryVersion()
     {
@@ -94,8 +94,8 @@ class TermTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Term::addThesaurusId
-     * @covers Ilios\MeSH\Model\Term::getThesaurusIds
+     * @covers \Ilios\MeSH\Model\Term::addThesaurusId
+     * @covers \Ilios\MeSH\Model\Term::getThesaurusIds
      */
     public function testAddGetThesaurusIds()
     {
@@ -103,8 +103,8 @@ class TermTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Term::getNote
-     * @covers Ilios\MeSH\Model\Term::setNote
+     * @covers \Ilios\MeSH\Model\Term::getNote
+     * @covers \Ilios\MeSH\Model\Term::setNote
      */
     public function testGetSetNote()
     {
@@ -112,8 +112,8 @@ class TermTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Term::getDateCreated
-     * @covers Ilios\MeSH\Model\Term::setDateCreated
+     * @covers \Ilios\MeSH\Model\Term::getDateCreated
+     * @covers \Ilios\MeSH\Model\Term::setDateCreated
      */
     public function testGetDateCreated()
     {

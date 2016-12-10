@@ -32,8 +32,8 @@ class EntryCombinationTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\EntryCombination::getDescriptorIn
-     * @covers Ilios\MeSH\Model\EntryCombination::setDescriptorIn
+     * @covers \Ilios\MeSH\Model\EntryCombination::getDescriptorIn
+     * @covers \Ilios\MeSH\Model\EntryCombination::setDescriptorIn
      */
     public function testGetSetDescriptorIn()
     {
@@ -41,8 +41,8 @@ class EntryCombinationTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\EntryCombination::getDescriptorOut
-     * @covers Ilios\MeSH\Model\EntryCombination::setDescriptorOut
+     * @covers \Ilios\MeSH\Model\EntryCombination::getDescriptorOut
+     * @covers \Ilios\MeSH\Model\EntryCombination::setDescriptorOut
      */
     public function testGetSetDescriptorOut()
     {
@@ -50,8 +50,8 @@ class EntryCombinationTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\EntryCombination::getQualifierIn
-     * @covers Ilios\MeSH\Model\EntryCombination::setQualifierIn
+     * @covers \Ilios\MeSH\Model\EntryCombination::getQualifierIn
+     * @covers \Ilios\MeSH\Model\EntryCombination::setQualifierIn
      */
     public function testGetSetQualifierIn()
     {
@@ -59,8 +59,8 @@ class EntryCombinationTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\EntryCombination::getQualifierOut
-     * @covers Ilios\MeSH\Model\EntryCombination::setQualifierOut
+     * @covers \Ilios\MeSH\Model\EntryCombination::getQualifierOut
+     * @covers \Ilios\MeSH\Model\EntryCombination::setQualifierOut
      */
     public function testGetSetQualifierOut()
     {

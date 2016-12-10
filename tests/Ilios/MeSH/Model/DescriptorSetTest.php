@@ -23,7 +23,7 @@ class DescriptorSetTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\DescriptorSet::__construct
+     * @covers \Ilios\MeSH\Model\DescriptorSet::__construct
      */
     public function testConstructor()
     {
@@ -32,8 +32,8 @@ class DescriptorSetTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\DescriptorSet::setLanguageCode
-     * @covers Ilios\MeSH\Model\DescriptorSet::getLanguageCode
+     * @covers \Ilios\MeSH\Model\DescriptorSet::setLanguageCode
+     * @covers \Ilios\MeSH\Model\DescriptorSet::getLanguageCode
      */
     public function testGetSetLanguageCode()
     {
@@ -41,8 +41,8 @@ class DescriptorSetTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\DescriptorSet::addDescriptor
-     * @covers Ilios\MeSH\Model\DescriptorSet::getDescriptors
+     * @covers \Ilios\MeSH\Model\DescriptorSet::addDescriptor
+     * @covers \Ilios\MeSH\Model\DescriptorSet::getDescriptors
      */
     public function testAddGetDescriptors()
     {
@@ -66,7 +66,7 @@ class DescriptorSetTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\DescriptorSet::getDescriptorUis
+     * @covers \Ilios\MeSH\Model\DescriptorSet::getDescriptorUis
      */
     public function testGetSetDescriptorUis()
     {
@@ -85,7 +85,7 @@ class DescriptorSetTest extends BaseTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\DescriptorSet::getDescriptorByUi
+     * @covers \Ilios\MeSH\Model\DescriptorSet::getDescriptorByUi
      */
     public function testFindDescriptorByUi()
     {

@@ -23,7 +23,7 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::__construct
+     * @covers \Ilios\MeSH\Model\Descriptor::__construct
      */
     public function testConstructor()
     {
@@ -33,8 +33,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::setClass
-     * @covers Ilios\MeSH\Model\Descriptor::getClass
+     * @covers \Ilios\MeSH\Model\Descriptor::setClass
+     * @covers \Ilios\MeSH\Model\Descriptor::getClass
      */
     public function testGetSetClass()
     {
@@ -42,8 +42,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::setDateCreated
-     * @covers Ilios\MeSH\Model\Descriptor::getDateCreated
+     * @covers \Ilios\MeSH\Model\Descriptor::setDateCreated
+     * @covers \Ilios\MeSH\Model\Descriptor::getDateCreated
      */
     public function testGetSetDateCreated()
     {
@@ -51,8 +51,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::setDateRevised
-     * @covers Ilios\MeSH\Model\Descriptor::getDateRevised
+     * @covers \Ilios\MeSH\Model\Descriptor::setDateRevised
+     * @covers \Ilios\MeSH\Model\Descriptor::getDateRevised
      */
     public function testGetSetDateRevised()
     {
@@ -60,8 +60,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::setDateEstablished
-     * @covers Ilios\MeSH\Model\Descriptor::getDateEstablished
+     * @covers \Ilios\MeSH\Model\Descriptor::setDateEstablished
+     * @covers \Ilios\MeSH\Model\Descriptor::getDateEstablished
      */
     public function testGetSetDateEstablished()
     {
@@ -69,8 +69,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::addAllowableQualifier
-     * @covers Ilios\MeSH\Model\Descriptor::getAllowableQualifiers
+     * @covers \Ilios\MeSH\Model\Descriptor::addAllowableQualifier
+     * @covers \Ilios\MeSH\Model\Descriptor::getAllowableQualifiers
      */
     public function testAddGetAllowableQualifiers()
     {
@@ -78,8 +78,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::setAnnotation
-     * @covers Ilios\MeSH\Model\Descriptor::getAnnotation
+     * @covers \Ilios\MeSH\Model\Descriptor::setAnnotation
+     * @covers \Ilios\MeSH\Model\Descriptor::getAnnotation
      */
     public function testGetSetAnnotation()
     {
@@ -87,8 +87,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::setHistoryNote
-     * @covers Ilios\MeSH\Model\Descriptor::getHistoryNote
+     * @covers \Ilios\MeSH\Model\Descriptor::setHistoryNote
+     * @covers \Ilios\MeSH\Model\Descriptor::getHistoryNote
      */
     public function testGetSetHistoryNote()
     {
@@ -96,8 +96,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::setNlmClassificationNumber
-     * @covers Ilios\MeSH\Model\Descriptor::getNlmClassificationNumber
+     * @covers \Ilios\MeSH\Model\Descriptor::setNlmClassificationNumber
+     * @covers \Ilios\MeSH\Model\Descriptor::getNlmClassificationNumber
      */
     public function testNlmClassificationNumber()
     {
@@ -105,8 +105,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::setOnlineNote
-     * @covers Ilios\MeSH\Model\Descriptor::getOnlineNote
+     * @covers \Ilios\MeSH\Model\Descriptor::setOnlineNote
+     * @covers \Ilios\MeSH\Model\Descriptor::getOnlineNote
      */
     public function testGetSetOnlineNote()
     {
@@ -114,8 +114,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::setPublicMeshNote
-     * @covers Ilios\MeSH\Model\Descriptor::getPublicMeshNote
+     * @covers \Ilios\MeSH\Model\Descriptor::setPublicMeshNote
+     * @covers \Ilios\MeSH\Model\Descriptor::getPublicMeshNote
      */
     public function testGetSetPublicMeshNote()
     {
@@ -123,8 +123,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::addPreviousIndexing
-     * @covers Ilios\MeSH\Model\Descriptor::getPreviousIndexing
+     * @covers \Ilios\MeSH\Model\Descriptor::addPreviousIndexing
+     * @covers \Ilios\MeSH\Model\Descriptor::getPreviousIndexing
      */
     public function testAddGetPreviousIndexing()
     {
@@ -132,8 +132,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::addEntryCombination
-     * @covers Ilios\MeSH\Model\Descriptor::getEntryCombinations
+     * @covers \Ilios\MeSH\Model\Descriptor::addEntryCombination
+     * @covers \Ilios\MeSH\Model\Descriptor::getEntryCombinations
      */
     public function testAddGetEntryCombinations()
     {
@@ -141,8 +141,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::addRelatedDescriptor
-     * @covers Ilios\MeSH\Model\Descriptor::getRelatedDescriptors
+     * @covers \Ilios\MeSH\Model\Descriptor::addRelatedDescriptor
+     * @covers \Ilios\MeSH\Model\Descriptor::getRelatedDescriptors
      */
     public function testAddGetRelatedDescriptors()
     {
@@ -150,8 +150,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::setConsiderAlso
-     * @covers Ilios\MeSH\Model\Descriptor::getConsiderAlso
+     * @covers \Ilios\MeSH\Model\Descriptor::setConsiderAlso
+     * @covers \Ilios\MeSH\Model\Descriptor::getConsiderAlso
      */
     public function testGetSetConsiderAlso()
     {
@@ -159,8 +159,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::addPharmacologicalAction
-     * @covers Ilios\MeSH\Model\Descriptor::getPharmacologicalActions
+     * @covers \Ilios\MeSH\Model\Descriptor::addPharmacologicalAction
+     * @covers \Ilios\MeSH\Model\Descriptor::getPharmacologicalActions
      */
     public function testAddGetPharmacologicalAction()
     {
@@ -168,8 +168,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::addTreeNumber
-     * @covers Ilios\MeSH\Model\Descriptor::getTreeNumbers
+     * @covers \Ilios\MeSH\Model\Descriptor::addTreeNumber
+     * @covers \Ilios\MeSH\Model\Descriptor::getTreeNumbers
      */
     public function testAddGetTreeNumbers()
     {
@@ -177,8 +177,8 @@ class DescriptorTest extends ReferenceTest
     }
 
     /**
-     * @covers Ilios\MeSH\Model\Descriptor::addConcept
-     * @covers Ilios\MeSH\Model\Descriptor::getConcepts
+     * @covers \Ilios\MeSH\Model\Descriptor::addConcept
+     * @covers \Ilios\MeSH\Model\Descriptor::getConcepts
      */
     public function testAddGetConcepts()
     {
