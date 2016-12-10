@@ -1,4 +1,8 @@
 <?xml version="1.0"?>
+<!--
+Fake MeSH descriptors set, for testing purposes.
+It contains all possible elements defined by the schema.
+-->
 <!DOCTYPE DescriptorRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20170101.dtd">
 <DescriptorRecordSet LanguageCode="eng">
     <DescriptorRecord DescriptorClass="1">
@@ -54,7 +58,7 @@
             <EntryCombination>
                 <ECIN>
                     <DescriptorReferredTo>
-                        <DescriptorUI>D00004</DescriptorUI>
+                        <DescriptorUI>D000004</DescriptorUI>
                         <DescriptorName>
                             <String>some descriptor</String>
                         </DescriptorName>
@@ -73,6 +77,12 @@
                             <String>and another descriptor</String>
                         </DescriptorName>
                     </DescriptorReferredTo>
+                    <QualifierReferredTo>
+                        <QualifierUI>Q000006</QualifierUI>
+                        <QualifierName>
+                            <String>some other qualifier</String>
+                        </QualifierName>
+                    </QualifierReferredTo>
                 </ECOUT>
             </EntryCombination>
         </EntryCombinationList>
@@ -129,7 +139,7 @@
                     <RelatedRegistryNumber>a related registry number</RelatedRegistryNumber>
                 </RelatedRegistryNumberList>
                 <ConceptRelationList>
-                    <ConceptRelation RelationName="AAA">
+                    <ConceptRelation RelationName="BRD">
                         <Concept1UI>M0000001</Concept1UI>
                         <Concept2UI>M0000002</Concept2UI>
                     </ConceptRelation>
@@ -157,13 +167,13 @@
                 </ConceptName>
                 <RegistryNumber>0</RegistryNumber>
                 <ConceptRelationList>
-                    <ConceptRelation RelationName="AAA">
+                    <ConceptRelation RelationName="NRW">
                         <Concept1UI>M0000002</Concept1UI>
                         <Concept2UI>M0000003</Concept2UI>
                     </ConceptRelation>
                 </ConceptRelationList>
                 <TermList>
-                    <Term ConceptPreferredTermYN="Y" IsPermutedTermYN="N" LexicalTag="AAB" RecordPreferredTermYN="N">
+                    <Term ConceptPreferredTermYN="Y" IsPermutedTermYN="N" LexicalTag="ABB" RecordPreferredTermYN="N">
                         <TermUI>T000002</TermUI>
                         <String>another term</String>
                         <DateCreated>
@@ -184,9 +194,6 @@
                             <Month>11</Month>
                             <Day>10</Day>
                         </DateCreated>
-                        <ThesaurusIDlist>
-                            <ThesaurusID></ThesaurusID>
-                        </ThesaurusIDlist>
                     </Term>
                 </TermList>
             </Concept>
