@@ -132,7 +132,7 @@ class Parser
         $descriptors = new DescriptorSet();
 
         $reader = $this->reader;
-        if (!$reader->open($uri)) {
+        if (!@$reader->open($uri)) {
             throw new \Exception('XML reader failed to open '.$uri.'.');
         };
 
@@ -428,7 +428,7 @@ class Parser
         }
         if (3 !== count($ymd)) {
             throw new \Exception(
-                sprintf('Could not retrieve Year/Month/Day info from node "%".', $node->nodeName)
+                sprintf('Could not retrieve Year/Month/Day info from node "%s".', $node->nodeName)
             );
         }
         $dt = new \DateTime();
