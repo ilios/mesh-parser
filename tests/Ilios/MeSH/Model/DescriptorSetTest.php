@@ -63,7 +63,6 @@ class DescriptorSetTest extends BaseTest
         $this->object->addDescriptor($descriptor3);
         $this->assertEquals(count($this->object->getDescriptors()), 2);
         $this->assertEquals($this->object->getDescriptors()[1], $descriptor3);
-
     }
 
     /**

@@ -129,7 +129,6 @@ class DescriptorTest extends ReferenceTest
     public function testAddGetPreviousIndexing()
     {
         $this->addTextToListTest($this->object, 'previousIndexing', 'getPreviousIndexing');
-
     }
 
     /**
@@ -175,7 +174,6 @@ class DescriptorTest extends ReferenceTest
     public function testAddGetTreeNumbers()
     {
         $this->addTextToListTest($this->object, 'treeNumber');
-
     }
 
     /**
