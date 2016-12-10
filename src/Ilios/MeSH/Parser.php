@@ -110,15 +110,23 @@ class Parser
      */
     public function parse($uri)
     {
-
+        /* @var Concept */
         $currentConcept = null;
+        /* @var AllowableQualifier */
         $currentAllowableQualifier = null;
+        /* @var ConceptRelation */
         $currentConceptRelation = null;
+        /* @var Descriptor */
         $currentDescriptor = null;
+        /* @var EntryCombination */
         $currentEntryCombination = null;
+        /* @var Reference */
         $currentDescriptorReference = null;
+        /* @var Reference */
         $currentConceptReference = null;
+        /* @var Reference */
         $currentQualifierReference = null;
+        /* @var Term */
         $currentTerm = null;
 
         $descriptors = new DescriptorSet();
@@ -408,13 +416,13 @@ class Parser
         foreach ($children as $child) {
             switch ($child->nodeName) {
                 case self::YEAR:
-                    $ymd['year'] = (int) $child->nodeValue;
+                    $ymd['year'] = (int)$child->nodeValue;
                     break;
                 case self::MONTH:
-                    $ymd['month'] = (int) $child->nodeValue;
+                    $ymd['month'] = (int)$child->nodeValue;
                     break;
                 case self::DAY:
-                    $ymd['day'] = (int) $child->nodeValue;
+                    $ymd['day'] = (int)$child->nodeValue;
                     break;
             }
         }
