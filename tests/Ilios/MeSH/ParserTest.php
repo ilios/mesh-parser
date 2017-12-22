@@ -2,11 +2,13 @@
 
 namespace Ilios\MeSH;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Class ParserTest
  * @package Ilios\MeSH
  */
-class ParserTest extends \PHPUnit_Framework_TestCase
+class ParserTest extends TestCase
 {
     /**
      * @var Parser
@@ -109,11 +111,11 @@ EOL;
     {
         $file = __DIR__ . '/desc.xml';
         $descriptorsSet = $this->parser->parse($file);
-        
+
         $descriptors = $descriptorsSet->getDescriptors();
         $this->assertEquals('eng', $descriptorsSet->getLanguageCode());
         $this->assertEquals(1, count($descriptors));
-        
+
         $descriptor = $descriptors[0];
         $this->assertEquals('a descriptor', $descriptor->getName());
         $this->assertEquals('D000000', $descriptor->getUi());
@@ -121,7 +123,7 @@ EOL;
         $this->assertEquals('2016/12/08', $descriptor->getDateCreated()->format('Y/m/d'));
         $this->assertEquals('2016/12/09', $descriptor->getDateRevised()->format('Y/m/d'));
         $this->assertEquals('2004/04/23', $descriptor->getDateEstablished()->format('Y/m/d'));
-        
+
         $allowableQualifiers = $descriptor->getAllowableQualifiers();
         $this->assertEquals(2, count($allowableQualifiers));
         $this->assertEquals('Q000001', $allowableQualifiers[0]->getQualifierReference()->getUi());
@@ -135,12 +137,12 @@ EOL;
         $this->assertEquals('a nlm classification number', $descriptor->getNlmClassificationNumber());
         $this->assertEquals('an online note', $descriptor->getOnlineNote());
         $this->assertEquals('a public mesh note', $descriptor->getPublicMeshNote());
-        
+
         $previousIndexing = $descriptor->getPreviousIndexing();
         $this->assertEquals(2, count($previousIndexing));
         $this->assertEquals('previously indexed as', $previousIndexing[0]);
         $this->assertEquals('also previously indexed as', $previousIndexing[1]);
-        
+
         $entryCombinations = $descriptor->getEntryCombinations();
         $this->assertEquals(1, count($entryCombinations));
         $this->assertEquals('D000004', $entryCombinations[0]->getDescriptorIn()->getUi());
@@ -151,7 +153,7 @@ EOL;
         $this->assertEquals('and another descriptor', $entryCombinations[0]->getDescriptorOut()->getName());
         $this->assertEquals('Q000006', $entryCombinations[0]->getQualifierOut()->getUi());
         $this->assertEquals('some other qualifier', $entryCombinations[0]->getQualifierOut()->getName());
-        
+
         $relatedDescriptors = $descriptor->getRelatedDescriptors();
         $this->assertEquals(2, count($relatedDescriptors));
         $this->assertEquals('D000002', $relatedDescriptors[0]->getUi());
@@ -159,14 +161,14 @@ EOL;
         $this->assertEquals('D000003', $relatedDescriptors[1]->getUi());
         $this->assertEquals('yet another descriptor', $relatedDescriptors[1]->getName());
         $this->assertEquals('other considerations', $descriptor->getConsiderAlso());
-        
+
         $pharmActions = $descriptor->getPharmacologicalActions();
         $this->assertEquals(2, count($pharmActions));
         $this->assertEquals('D000002', $pharmActions[0]->getUi());
         $this->assertEquals('another descriptor', $pharmActions[0]->getName());
         $this->assertEquals('D000003', $pharmActions[1]->getUi());
         $this->assertEquals('yet another descriptor', $pharmActions[1]->getName());
-        
+
         $treeNumbers = $descriptor->getTreeNumbers();
         $this->assertEquals(1, count($treeNumbers));
         $this->assertEquals('D00.000.000.000.001', $treeNumbers[0]);
@@ -180,17 +182,17 @@ EOL;
         $this->assertEquals('a casn1 name', $concept->getCasn1Name());
         $this->assertEquals('00000AAAAA', $concept->getRegistryNumber());
         $this->assertEquals('a scope note', $concept->getScopeNote());
-        
+
         $registryNumbers = $concept->getRelatedRegistryNumbers();
         $this->assertEquals(1, count($registryNumbers));
         $this->assertEquals('a related registry number', $registryNumbers[0]);
-        
+
         $relations = $concept->getConceptRelations();
         $this->assertEquals(1, count($relations));
         $this->assertEquals('BRD', $relations[0]->getName());
         $this->assertEquals('M0000001', $relations[0]->getConcept1Ui());
         $this->assertEquals('M0000002', $relations[0]->getConcept2Ui());
-        
+
         $terms = $concept->getTerms();
         $this->assertEquals(1, count($terms));
         $this->assertTrue($terms[0]->isConceptPreferred());
@@ -200,12 +202,12 @@ EOL;
         $this->assertEquals('T000001', $terms[0]->getUi());
         $this->assertEquals('a term', $terms[0]->getName());
         $this->assertEquals('1999/01/01', $terms[0]->getDateCreated()->format('Y/m/d'));
-        
+
         $thesaurusIds = $terms[0]->getThesaurusIds();
         $this->assertEquals(2, count($thesaurusIds));
         $this->assertEquals('a thesaurus id', $thesaurusIds[0]);
         $this->assertEquals('another thesaurus id', $thesaurusIds[1]);
-        
+
         $concept = $concepts[1];
         $this->assertFalse($concept->isPreferred());
         $this->assertEquals('M0000002', $concept->getUi());
