@@ -2,7 +2,7 @@
 
 namespace Ilios\MeSH\Model;
 
-use \PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use \Mockery as m;
 use \Faker\Factory as faker;
 
@@ -10,7 +10,7 @@ use \Faker\Factory as faker;
  * Class BaseTest
  * @package Ilios\MeSH\Model
  */
-abstract class BaseTest extends PHPUnit_Framework_TestCase
+abstract class BaseTest extends TestCase
 {
     public function tearDown()
     {
