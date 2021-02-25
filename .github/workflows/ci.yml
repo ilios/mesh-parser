@@ -1,0 +1,53 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  schedule:
+    - cron: '34 4 * * 1' # weekly, on Thursday morning
+
+jobs:
+  code_style:
+    name: Code Style
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: [7.4,8.0]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use PHP ${{ matrix.php-version }}
+      uses: shivammathur/setup-php@v2
+      with:
+        coverage: none
+        php-version: ${{ matrix.php-version }}
+    - name: install dependencies
+      run: composer install --no-interaction --prefer-dist
+    - name: lint src
+      run: bin/phpcs --standard=PSR2 src
+    - name: lint tests
+      run: bin/phpcs --standard=PSR2 tests
+
+  tests:
+    name: PHPUnit Tests
+    needs: code_style
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: [7.4,8.0]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use PHP ${{ matrix.php-version }}
+      uses: shivammathur/setup-php@v2
+      with:
+        coverage: none
+        php-version: ${{ matrix.php-version }}
+    - name: install dependencies
+      run: composer install --no-interaction --prefer-dist
+    - name: Run Tests
+      run: bin/phpunit tests
