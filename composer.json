@@ -16,13 +16,13 @@
     }
   ],
   "require": {
-    "php": "~7.1|~7.2"
+    "php": ">=7.3"
   },
   "require-dev": {
     "mockery/mockery": "@stable",
-    "phpunit/phpunit": "6.*",
+    "phpunit/phpunit": "@stable",
     "squizlabs/php_codesniffer": "@stable",
-    "fzaninotto/faker": "^1.5"
+    "fakerphp/faker": "@stable"
   },
   "autoload": {
     "psr-4": {
