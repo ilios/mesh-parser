@@ -12,7 +12,7 @@ use \Faker\Factory as faker;
  */
 abstract class BaseTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }
