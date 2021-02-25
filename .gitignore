@@ -2,3 +2,4 @@
 *.patch
 /bin/*
 /vendor/
+.phpunit.result.cache

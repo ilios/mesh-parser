@@ -2,8 +2,8 @@ language: php
 dist: trusty
 sudo: false
 php:
-- '7.1'
-- '7.2'
+- '7.4'
+- '8.0'
 cache:
   directories:
   - "$HOME/.composer/cache"

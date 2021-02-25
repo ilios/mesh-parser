@@ -16,7 +16,7 @@ class ConceptRelationTest extends BaseTest
     /**
      * @inheritdoc
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->object = new ConceptRelation();
@@ -25,7 +25,7 @@ class ConceptRelationTest extends BaseTest
     /**
      * @inheritdoc
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
         unset($this->object);

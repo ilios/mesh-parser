@@ -16,7 +16,7 @@ class TermTest extends ReferenceTest
     /**
      * @inheritdoc
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->object = new Term();
