@@ -27,9 +27,9 @@ jobs:
     - name: install dependencies
       run: composer install --no-interaction --prefer-dist
     - name: lint src
-      run: bin/phpcs --standard=PSR2 src
+      run: bin/phpcs src
     - name: lint tests
-      run: bin/phpcs --standard=PSR2 tests
+      run: bin/phpcs tests
 
   tests:
     name: PHPUnit Tests
