@@ -3,3 +3,4 @@
 /bin/*
 /vendor/
 .phpunit.cache
+.phpcs-cache
