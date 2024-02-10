@@ -1,123 +1,91 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
+
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class ConceptTest
+ *
  * @package Ilios\MeSH\Model
+ * #[CoversClass(Concept::class)]
  */
-class ConceptTest extends ReferenceTest
+class ConceptTest extends BaseTestCase
 {
-    /**
-     * @var Concept
-     */
-    protected $object;
+    protected Concept $object;
 
-    /**
-     * @inheritdoc
-     */
     public function setUp(): void
     {
         parent::setUp();
         $this->object = new Concept();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function tearDown(): void
     {
         parent::tearDown();
         unset($this->object);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Concept::__construct
-     */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $this->assertEmpty($this->object->getRelatedRegistryNumbers());
         $this->assertEmpty($this->object->getTerms());
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Concept::isPreferred
-     * @covers \Ilios\MeSH\Model\Concept::setPreferred
-     */
-    public function testIsSetPreferred()
+    public function testIsSetPreferred(): void
     {
         $this->booleanSetTest($this->object, 'preferred', true);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Concept::getCasn1Name
-     * @covers \Ilios\MeSH\Model\Concept::setCasn1Name
-     */
-    public function testGetSetCasn1Name()
+    public function testGetSetCasn1Name(): void
     {
         $this->basicSetTest($this->object, 'casn1Name', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Concept::getRegistryNumber
-     * @covers \Ilios\MeSH\Model\Concept::setRegistryNumber
-     */
-    public function testGetSetRegistryNumber()
+    public function testGetSetRegistryNumber(): void
     {
         $this->basicSetTest($this->object, 'registryNumber', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Concept::getScopeNote
-     * @covers \Ilios\MeSH\Model\Concept::setScopeNote
-     */
-    public function testGetSetScopeNote()
+    public function testGetSetScopeNote(): void
     {
         $this->basicSetTest($this->object, 'scopeNote', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Concept::getTranslatorsEnglishScopeNote
-     * @covers \Ilios\MeSH\Model\Concept::setTranslatorsEnglishScopeNote
-     */
-    public function testGetSetTranslatorsEnglishScopeNote()
+    public function testGetSetTranslatorsEnglishScopeNote(): void
     {
         $this->basicSetTest($this->object, 'translatorsEnglishScopeNote', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Concept::getTranslatorsScopeNote
-     * @covers \Ilios\MeSH\Model\Concept::setTranslatorsScopeNote
-     */
-    public function testGetSetTranslatorsScopeNote()
+    public function testGetSetTranslatorsScopeNote(): void
     {
         $this->basicSetTest($this->object, 'translatorsScopeNote', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Concept::addRelatedRegistryNumber
-     * @covers \Ilios\MeSH\Model\Concept::getRelatedRegistryNumbers
-     */
-    public function testAddGetRelatedRegistryNumbers()
+    public function testAddGetRelatedRegistryNumbers(): void
     {
         $this->addTextToListTest($this->object, 'relatedRegistryNumber');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Concept::addConceptRelation
-     * @covers \Ilios\MeSH\Model\Concept::getConceptRelations
-     */
-    public function testAddGetConceptRelations()
+    public function testAddGetConceptRelations(): void
     {
         $this->addModelToListTest($this->object, 'conceptRelation', 'ConceptRelation');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Concept::addTerm
-     * @covers \Ilios\MeSH\Model\Concept::getTerms
-     */
-    public function testAddGetTerms()
+    public function testAddGetTerms(): void
     {
         $this->addModelToListTest($this->object, 'term', 'Term');
+    }
+
+    public function testGetSetUi(): void
+    {
+        $this->basicSetTest($this->object, 'ui', 'string');
+    }
+
+    public function testGetSetName(): void
+    {
+        $this->basicSetTest($this->object, 'name', 'string');
     }
 }

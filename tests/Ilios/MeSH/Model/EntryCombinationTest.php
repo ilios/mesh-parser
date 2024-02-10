@@ -1,68 +1,49 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
+
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class EntryCombinationTest
+ *
  * @package Ilios\MeSH\Model
+ * #[CoversClass(EntryCombination::class)]
  */
-class EntryCombinationTest extends BaseTest
+class EntryCombinationTest extends BaseTestCase
 {
-    /**
-     * @var EntryCombination
-     */
-    protected $object;
+    protected EntryCombination $object;
 
-    /**
-     * @inheritdoc
-     */
     public function setUp(): void
     {
         parent::setUp();
         $this->object = new EntryCombination();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function tearDown(): void
     {
         parent::tearDown();
         unset($this->object);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\EntryCombination::getDescriptorIn
-     * @covers \Ilios\MeSH\Model\EntryCombination::setDescriptorIn
-     */
-    public function testGetSetDescriptorIn()
+    public function testGetSetDescriptorIn(): void
     {
         $this->modelSetTest($this->object, 'descriptorIn', 'Reference');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\EntryCombination::getDescriptorOut
-     * @covers \Ilios\MeSH\Model\EntryCombination::setDescriptorOut
-     */
-    public function testGetSetDescriptorOut()
+    public function testGetSetDescriptorOut(): void
     {
         $this->modelSetTest($this->object, 'descriptorOut', 'Reference');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\EntryCombination::getQualifierIn
-     * @covers \Ilios\MeSH\Model\EntryCombination::setQualifierIn
-     */
-    public function testGetSetQualifierIn()
+    public function testGetSetQualifierIn(): void
     {
         $this->modelSetTest($this->object, 'qualifierIn', 'Reference');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\EntryCombination::getQualifierOut
-     * @covers \Ilios\MeSH\Model\EntryCombination::setQualifierOut
-     */
-    public function testGetSetQualifierOut()
+    public function testGetSetQualifierOut(): void
     {
         $this->modelSetTest($this->object, 'qualifierOut', 'Reference');
     }

@@ -1,187 +1,126 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
+
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class DescriptorTest
+ *
  * @package Ilios\MeSH\Model
+ * #[CoversClass(Descriptor::class)]
  */
-class DescriptorTest extends ReferenceTest
+class DescriptorTest extends BaseTestCase
 {
-    /**
-     * @var Descriptor
-     */
-    protected $object;
+    protected Descriptor $object;
 
-    /**
-     * @inheritdoc
-     */
     public function setUp(): void
     {
         parent::setUp();
         $this->object = new Descriptor();
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::__construct
-     */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $this->assertEmpty($this->object->getConcepts());
         $this->assertEmpty($this->object->getEntryCombinations());
         $this->assertEmpty($this->object->getAllowableQualifiers());
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::setClass
-     * @covers \Ilios\MeSH\Model\Descriptor::getClass
-     */
-    public function testGetSetClass()
+    public function testGetSetClass(): void
     {
         $this->basicSetTest($this->object, 'class', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::setDateCreated
-     * @covers \Ilios\MeSH\Model\Descriptor::getDateCreated
-     */
-    public function testGetSetDateCreated()
+    public function testGetSetDateCreated(): void
     {
         $this->basicSetTest($this->object, 'dateCreated', 'datetime');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::setDateRevised
-     * @covers \Ilios\MeSH\Model\Descriptor::getDateRevised
-     */
-    public function testGetSetDateRevised()
+    public function testGetSetDateRevised(): void
     {
         $this->basicSetTest($this->object, 'dateRevised', 'datetime');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::setDateEstablished
-     * @covers \Ilios\MeSH\Model\Descriptor::getDateEstablished
-     */
-    public function testGetSetDateEstablished()
+    public function testGetSetDateEstablished(): void
     {
         $this->basicSetTest($this->object, 'dateEstablished', 'datetime');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::addAllowableQualifier
-     * @covers \Ilios\MeSH\Model\Descriptor::getAllowableQualifiers
-     */
-    public function testAddGetAllowableQualifiers()
+    public function testAddGetAllowableQualifiers(): void
     {
         $this->addModelToListTest($this->object, 'allowableQualifier', 'AllowableQualifier');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::setAnnotation
-     * @covers \Ilios\MeSH\Model\Descriptor::getAnnotation
-     */
-    public function testGetSetAnnotation()
+    public function testGetSetAnnotation(): void
     {
         $this->basicSetTest($this->object, 'annotation', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::setHistoryNote
-     * @covers \Ilios\MeSH\Model\Descriptor::getHistoryNote
-     */
-    public function testGetSetHistoryNote()
+    public function testGetSetHistoryNote(): void
     {
         $this->basicSetTest($this->object, 'historyNote', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::setNlmClassificationNumber
-     * @covers \Ilios\MeSH\Model\Descriptor::getNlmClassificationNumber
-     */
-    public function testNlmClassificationNumber()
+    public function testNlmClassificationNumber(): void
     {
         $this->basicSetTest($this->object, 'nlmClassificationNumber', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::setOnlineNote
-     * @covers \Ilios\MeSH\Model\Descriptor::getOnlineNote
-     */
-    public function testGetSetOnlineNote()
+    public function testGetSetOnlineNote(): void
     {
         $this->basicSetTest($this->object, 'onlineNote', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::setPublicMeshNote
-     * @covers \Ilios\MeSH\Model\Descriptor::getPublicMeshNote
-     */
-    public function testGetSetPublicMeshNote()
+    public function testGetSetPublicMeshNote(): void
     {
         $this->basicSetTest($this->object, 'publicMeshNote', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::addPreviousIndexing
-     * @covers \Ilios\MeSH\Model\Descriptor::getPreviousIndexing
-     */
-    public function testAddGetPreviousIndexing()
+    public function testAddGetPreviousIndexing(): void
     {
         $this->addTextToListTest($this->object, 'previousIndexing', 'getPreviousIndexing');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::addEntryCombination
-     * @covers \Ilios\MeSH\Model\Descriptor::getEntryCombinations
-     */
-    public function testAddGetEntryCombinations()
+    public function testAddGetEntryCombinations(): void
     {
         $this->addModelToListTest($this->object, 'entryCombination', 'EntryCombination');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::addRelatedDescriptor
-     * @covers \Ilios\MeSH\Model\Descriptor::getRelatedDescriptors
-     */
-    public function testAddGetRelatedDescriptors()
+    public function testAddGetRelatedDescriptors(): void
     {
         $this->addModelToListTest($this->object, 'relatedDescriptor', 'Reference');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::setConsiderAlso
-     * @covers \Ilios\MeSH\Model\Descriptor::getConsiderAlso
-     */
-    public function testGetSetConsiderAlso()
+    public function testGetSetConsiderAlso(): void
     {
         $this->basicSetTest($this->object, 'considerAlso', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::addPharmacologicalAction
-     * @covers \Ilios\MeSH\Model\Descriptor::getPharmacologicalActions
-     */
-    public function testAddGetPharmacologicalAction()
+    public function testAddGetPharmacologicalAction(): void
     {
         $this->addModelToListTest($this->object, 'pharmacologicalAction', 'Reference');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::addTreeNumber
-     * @covers \Ilios\MeSH\Model\Descriptor::getTreeNumbers
-     */
-    public function testAddGetTreeNumbers()
+    public function testAddGetTreeNumbers(): void
     {
         $this->addTextToListTest($this->object, 'treeNumber');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Descriptor::addConcept
-     * @covers \Ilios\MeSH\Model\Descriptor::getConcepts
-     */
-    public function testAddGetConcepts()
+    public function testAddGetConcepts(): void
     {
         $this->addModelToListTest($this->object, 'concept', 'Concept');
+    }
+
+    public function testGetSetUi(): void
+    {
+        $this->basicSetTest($this->object, 'ui', 'string');
+    }
+
+    public function testGetSetName(): void
+    {
+        $this->basicSetTest($this->object, 'name', 'string');
     }
 }

@@ -1,50 +1,39 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
+
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class AllowableQualifierTest
+ *
  * @package Ilios\MeSH\Model
+ * #[CoversClass(AllowableQualifier::class)]
  */
-class AllowableQualifierTest extends BaseTest
+class AllowableQualifierTest extends BaseTestCase
 {
-    /**
-     * @var AllowableQualifier
-     */
-    protected $object;
+    protected AllowableQualifier $object;
 
-    /**
-     * @inheritdoc
-     */
     public function setUp(): void
     {
         parent::setUp();
         $this->object = new AllowableQualifier();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function tearDown(): void
     {
         parent::tearDown();
         unset($this->object);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\AllowableQualifier::getQualifierReference
-     * @covers \Ilios\MeSH\Model\AllowableQualifier::setQualifierReference
-     */
-    public function testGetSetQualifierReference()
+    public function testGetSetQualifierReference(): void
     {
         $this->modelSetTest($this->object, 'qualifierReference', 'Reference');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\AllowableQualifier::getAbbreviation
-     * @covers \Ilios\MeSH\Model\AllowableQualifier::setAbbreviation
-     */
-    public function testGetSetAbbreviation()
+    public function testGetSetAbbreviation(): void
     {
         $this->basicSetTest($this->object, 'abbreviation', 'string');
     }

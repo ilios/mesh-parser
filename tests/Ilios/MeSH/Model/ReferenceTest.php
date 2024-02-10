@@ -1,50 +1,39 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
+
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class ReferenceTest
+ *
  * @package Ilios\MeSH\Model
+ * #[CoversClass(Reference::class)]
  */
-class ReferenceTest extends BaseTest
+class ReferenceTest extends BaseTestCase
 {
-    /**
-     * @var Reference
-     */
-    protected $object;
+    protected Reference $object;
 
-    /**
-     * @inheritdoc
-     */
     public function setUp(): void
     {
         parent::setUp();
         $this->object = new Reference();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function tearDown(): void
     {
         parent::tearDown();
         unset($this->object);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Reference::getUi
-     * @covers \Ilios\MeSH\Model\Reference::setUi
-     */
-    public function testGetSetUi()
+    public function testGetSetUi(): void
     {
         $this->basicSetTest($this->object, 'ui', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Reference::getName
-     * @covers \Ilios\MeSH\Model\Reference::setName
-     */
-    public function testGetSetName()
+    public function testGetSetName(): void
     {
         $this->basicSetTest($this->object, 'name', 'string');
     }

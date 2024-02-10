@@ -1,55 +1,46 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class ParserTest
+ *
  * @package Ilios\MeSH
+ * #[CoversClass(Parser::class)]
  */
 class ParserTest extends TestCase
 {
-    /**
-     * @var Parser
-     */
-    protected $parser;
+    protected Parser $parser;
 
-    /**
-     * @inheritdoc
-     */
     protected function setUp(): void
     {
         $this->parser = new Parser();
     }
 
-    /**
-     * @inheritdoc
-     */
     protected function tearDown(): void
     {
         unset($this->parser);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Parser::parse
-     */
-    public function testForInvalidInputUriFailure()
+    public function testForInvalidInputUriFailure(): void
     {
         $uri = 'this/is/a/path/that/does/not/exist/desc.xml';
         try {
             $this->parser->parse($uri);
-        } catch (\Exception $e) {
-            $this->assertSame("XML reader failed to open ${uri}.", $e->getMessage());
+        } catch (Exception $e) {
+            $this->assertSame("XML reader failed to open $uri.", $e->getMessage());
         }
     }
 
-    /**
-     * @covers \Ilios\MeSH\Parser::parse
-     */
-    public function testForIncompleteDateFailure()
+    public function testForIncompleteDateFailure(): void
     {
-        $xml =<<<EOL
+        $xml = <<<EOL
 <?xml version="1.0"?>
 <!DOCTYPE DescriptorRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20170101.dtd">
 <DescriptorRecordSet LanguageCode="eng">
@@ -68,17 +59,14 @@ EOL;
         try {
             /* @link http://php.net/manual/en/wrappers.data.php */
             $this->parser->parse('data://text/plain;base64,' . base64_encode($xml));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertSame('Could not retrieve Year/Month/Day info from node "DateCreated".', $e->getMessage());
         }
     }
 
-    /**
-     * @covers \Ilios\MeSH\Parser::parse
-     */
-    public function testForInvalidStringNodeFailure()
+    public function testForInvalidStringNodeFailure(): void
     {
-        $xml =<<<EOL
+        $xml = <<<EOL
 <?xml version="1.0"?>
 <!DOCTYPE DescriptorRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20170101.dtd">
 <DescriptorRecordSet LanguageCode="eng">
@@ -99,15 +87,12 @@ EOL;
 EOL;
         try {
             $this->parser->parse('data://text/plain;base64,' . base64_encode($xml));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->assertSame('Node "QualifierName" does not contain a child node of type "String".', $e->getMessage());
         }
     }
 
-    /**
-     * @covers \Ilios\MeSH\Parser::parse
-     */
-    public function testParse()
+    public function testParse(): void
     {
         $file = __DIR__ . '/desc.xml';
         $descriptorsSet = $this->parser->parse($file);
