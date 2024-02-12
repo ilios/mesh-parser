@@ -10,8 +10,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * Class EntryCombinationTest
  *
  * @package Ilios\MeSH\Model
- * #[CoversClass(EntryCombination::class)]
  */
+#[CoversClass(EntryCombination::class)]
 class EntryCombinationTest extends BaseTestCase
 {
     protected EntryCombination $object;

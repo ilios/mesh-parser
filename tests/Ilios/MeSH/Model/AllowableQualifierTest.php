@@ -10,8 +10,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * Class AllowableQualifierTest
  *
  * @package Ilios\MeSH\Model
- * #[CoversClass(AllowableQualifier::class)]
  */
+#[CoversClass(AllowableQualifier::class)]
 class AllowableQualifierTest extends BaseTestCase
 {
     protected AllowableQualifier $object;

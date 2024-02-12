@@ -10,8 +10,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * Class TermTest
  *
  * @package Ilios\MeSH\Model
- * #[CoversClass(Term::class)]
  */
+#[CoversClass(Term::class)]
 class TermTest extends BaseTestCase
 {
     protected Term $object;

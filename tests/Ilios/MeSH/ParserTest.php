@@ -12,8 +12,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * Class ParserTest
  *
  * @package Ilios\MeSH
- * #[CoversClass(Parser::class)]
  */
+#[CoversClass(Parser::class)]
 class ParserTest extends TestCase
 {
     protected Parser $parser;

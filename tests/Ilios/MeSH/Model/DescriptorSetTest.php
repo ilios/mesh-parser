@@ -10,8 +10,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * Class DescriptorSetTest
  *
  * @package Ilios\MeSH\Model
- * #[CoversClass(DescriptorSet::class)]
  */
+#[CoversClass(DescriptorSet::class)]
 class DescriptorSetTest extends BaseTestCase
 {
     protected DescriptorSet $object;
