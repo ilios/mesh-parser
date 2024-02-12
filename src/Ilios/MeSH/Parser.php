@@ -16,7 +16,7 @@ use Ilios\MeSH\Model\Term;
 /**
  * Class Parser
  * @package Ilios\MeSH
- * @link http://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20160101.dtd
+ * @link https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/xmlmesh/DTD/2024/nlmdescriptorrecordset_20240101.dtd
  */
 class Parser
 {

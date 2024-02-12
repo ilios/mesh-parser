@@ -3,7 +3,7 @@
 Fake MeSH descriptors set, for testing purposes.
 It contains all possible elements defined by the schema.
 -->
-<!DOCTYPE DescriptorRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20170101.dtd">
+<!DOCTYPE DescriptorRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20240101.dtd">
 <DescriptorRecordSet LanguageCode="eng">
     <DescriptorRecord DescriptorClass="1">
         <DescriptorUI>D000000</DescriptorUI>

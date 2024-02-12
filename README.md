@@ -1,9 +1,9 @@
 # MeSH Parser
 
-This PHP code library provides tools for extracting [Medical Subject Headings](https://www.nlm.nih.gov/mesh/) 
+This PHP code library provides tools for extracting [Medical Subject Headings](https://www.nlm.nih.gov/mesh/meshhome.html) 
 (MeSH) descriptors and associated data from a given XML file into an object representation.
 
-It expects its input to be compliant with the 2019 or 2020 [MeSH DTDs](https://www.nlm.nih.gov/databases/dtd/).
+It expects its input to be compliant with the 2023 or 2024 [MeSH DTDs](https://www.nlm.nih.gov/databases/download/mesh.html).
 
 ## Installation
 
@@ -15,11 +15,11 @@ composer require ilios/mesh-parser
 
 ## Usage
 
-Instantiate `\Ilios\MeSH\Parser` and invoke its `parse()` method with an URI that points at valid MeSH descriptors 
+Instantiate `\Ilios\MeSH\Parser` and invoke its `parse()` method with a URI that points at valid MeSH descriptors 
 XML file.  
 This method call will return an instance of  `\Ilios\MeSH\Model\DescriptorSet`; this is the entry point into
 the object representation of the descriptors data model.  
-Use getter methods on this object and its sub-components to traverse and process this model.
+Use getter methods on this object and its subcomponents to traverse and process this model.
 
 ### Example
 
@@ -28,8 +28,8 @@ Use getter methods on this object and its sub-components to traverse and process
 
 require __DIR__ . '/vendor/autoload.php';
 
-// provide an URL or a local file path.
-//$uri = 'ftp://nlmpubs.nlm.nih.gov/online/mesh/MESH_FILES/xmlmesh/desc2020.xml';
+// provide a URL or a local file path.
+//$uri = 'https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/xmlmesh/desc2024.xml';
 $uri = __DIR__ . '/desc2019.xml';
 
 // instantiate the parser and parse the input.

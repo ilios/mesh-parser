@@ -42,7 +42,7 @@ class ParserTest extends TestCase
     {
         $xml = <<<EOL
 <?xml version="1.0"?>
-<!DOCTYPE DescriptorRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20170101.dtd">
+<!DOCTYPE DescriptorRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20240101.dtd">
 <DescriptorRecordSet LanguageCode="eng">
     <DescriptorRecord DescriptorClass="1">
         <DescriptorUI>D000000</DescriptorUI>
@@ -68,7 +68,7 @@ EOL;
     {
         $xml = <<<EOL
 <?xml version="1.0"?>
-<!DOCTYPE DescriptorRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20170101.dtd">
+<!DOCTYPE DescriptorRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20240101.dtd">
 <DescriptorRecordSet LanguageCode="eng">
     <DescriptorRecord DescriptorClass="1">
         <DescriptorUI>D000000</DescriptorUI>
