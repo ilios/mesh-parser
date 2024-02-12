@@ -109,12 +109,13 @@ abstract class BaseTestCase extends TestCase
     /**
      * A generic test for setters methods.
      *
-     * @param  object $model
-     * @param  string $property
-     * @param  string $type
+     * @param object $model
+     * @param string $property
+     * @param string $type
+     * @param bool $nullable if TRUE then an additional getter/setter check for NULL is performed.
      * @throws Exception
      */
-    protected function basicSetTest(object $model, string $property, string $type): void
+    protected function basicSetTest(object $model, string $property, string $type, bool $nullable = false): void
     {
         $setMethod = $this->getSetMethodForProperty($property);
         $getMethod = $this->getGetMethodForProperty($property);
@@ -123,6 +124,10 @@ abstract class BaseTestCase extends TestCase
         $expected = $this->getValueForType($type);
         $model->$setMethod($expected);
         $this->assertSame($expected, $model->$getMethod());
+        if ($nullable) {
+            $model->$setMethod(null);
+            $this->assertNull($model->$getMethod());
+        }
     }
 
     /**
