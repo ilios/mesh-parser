@@ -2,230 +2,129 @@
 
 namespace Ilios\MeSH\Model;
 
+use DateTime;
+
 /**
  * Class Descriptor
  * @package Ilios\MeSH\Model
  */
 class Descriptor extends Reference
 {
-    /**
-     * @var string
-     */
-    protected $class;
+    protected string $class;
 
-    /**
-     * @var \DateTime
-     */
-    protected $dateCreated = null;
+    protected DateTime $dateCreated;
 
-    /**
-     * @var \DateTime|null
-     */
-    protected $dateEstablished = null;
+    protected ?DateTime $dateEstablished = null;
 
-    /**
-     * @var \DateTime|null
-     */
-    protected $dateRevised = null;
+    protected ?DateTime $dateRevised = null;
 
-    /**
-     * @var AllowableQualifier[]
-     */
-    protected $allowableQualifiers = [];
+    protected array $allowableQualifiers = [];
 
-    /**
-     * @var string
-     */
-    protected $annotation;
+    protected ?string $annotation = null;
 
-    /**
-     * @var string
-     */
-    protected $historyNote;
+    protected ?string $historyNote = null;
 
-    /**
-     * @var string
-     */
-    protected $nlmClassificationNumber;
+    protected ?string $nlmClassificationNumber = null;
 
-    /**
-     * @var string
-     */
-    protected $onlineNote;
+    protected ?string $onlineNote = null;
 
-    /**
-     * @var string
-     */
-    protected $publicMeshNote;
+    protected ?string $publicMeshNote;
 
-    /**
-     * @var string[]
-     */
-    protected $previousIndexing = [];
+    protected array $previousIndexing = [];
 
-    /**
-     * @var EntryCombination[]
-     */
-    protected $entryCombinations = [];
+    protected array $entryCombinations = [];
 
-    /**
-     * A list of related descriptors references.
-     * @var Reference[]
-     */
-    protected $relatedDescriptors = [];
+    protected array $relatedDescriptors = [];
 
-    /**
-     * @var string
-     */
-    protected $considerAlso;
+    protected ?string $considerAlso = null;
 
-    /**
-     * @var Reference[]
-     */
-    protected $pharmacologicalActions = [];
+    protected array $pharmacologicalActions = [];
 
-    /**
-     * @var string[]
-     */
-    protected $treeNumbers = [];
+    protected array $treeNumbers = [];
 
-    /**
-     * @var Concept[]
-     */
-    protected $concepts = [];
+    protected array $concepts = [];
 
-    /**
-     * @return string
-     */
-    public function getClass()
+    public function getClass(): string
     {
         return $this->class;
     }
 
-    /**
-     * @param string $class
-     */
-    public function setClass($class)
+    public function setClass(string $class): void
     {
         $this->class = $class;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getDateCreated()
+    public function getDateCreated(): DateTime
     {
         return $this->dateCreated;
     }
 
-    /**
-     * @param \DateTime $date
-     */
-    public function setDateCreated(\DateTime $date)
+    public function setDateCreated(DateTime $date): void
     {
         $this->dateCreated = $date;
     }
 
-    /**
-     * @return \DateTime|null
-     */
-    public function getDateRevised()
+    public function getDateRevised(): ?DateTime
     {
         return $this->dateRevised;
     }
 
-    /**
-     * @param \DateTime $date
-     */
-    public function setDateRevised(\DateTime $date)
+    public function setDateRevised(?DateTime $date): void
     {
         $this->dateRevised = $date;
     }
 
-    /**
-     * @return \DateTime|null
-     */
-    public function getDateEstablished()
+    public function getDateEstablished(): ?DateTime
     {
         return $this->dateEstablished;
     }
 
-    /**
-     * @param \DateTime $date |null
-     */
-    public function setDateEstablished(\DateTime $date)
+    public function setDateEstablished(?DateTime $date): void
     {
         $this->dateEstablished = $date;
     }
 
-    /**
-     * @return AllowableQualifier[]
-     */
-    public function getAllowableQualifiers()
+    public function getAllowableQualifiers(): array
     {
         return $this->allowableQualifiers;
     }
 
-    /**
-     * @param AllowableQualifier $qualifier
-     */
-    public function addAllowableQualifier(AllowableQualifier $qualifier)
+    public function addAllowableQualifier(AllowableQualifier $qualifier): void
     {
         $this->allowableQualifiers[] = $qualifier;
     }
 
-    /**
-     * @return string
-     */
-    public function getAnnotation()
+    public function getAnnotation(): ?string
     {
         return $this->annotation;
     }
 
-    /**
-     * @param string $annotation
-     */
-    public function setAnnotation($annotation)
+    public function setAnnotation(?string $annotation): void
     {
         $this->annotation = $annotation;
     }
 
-    /**
-     * @return string
-     */
-    public function getHistoryNote()
+    public function getHistoryNote(): ?string
     {
         return $this->historyNote;
     }
 
-    /**
-     * @param string $historyNote
-     */
-    public function setHistoryNote($historyNote)
+    public function setHistoryNote(?string $historyNote): void
     {
         $this->historyNote = $historyNote;
     }
 
-    /**
-     * @return string
-     */
-    public function getNlmClassificationNumber()
+    public function getNlmClassificationNumber(): ?string
     {
         return $this->nlmClassificationNumber;
     }
 
-    /**
-     * @param string $nlmClassificationNumber
-     */
-    public function setNlmClassificationNumber($nlmClassificationNumber)
+    public function setNlmClassificationNumber(?string $nlmClassificationNumber): void
     {
         $this->nlmClassificationNumber = $nlmClassificationNumber;
     }
 
-    /**
-     * @return string
-     */
-    public function getOnlineNote()
+    public function getOnlineNote(): ?string
     {
         return $this->onlineNote;
     }
@@ -233,135 +132,87 @@ class Descriptor extends Reference
     /**
      * @param string $onlineNote
      */
-    public function setOnlineNote($onlineNote)
+    public function setOnlineNote(?string $onlineNote): void
     {
         $this->onlineNote = $onlineNote;
     }
 
-    /**
-     * @return string
-     */
-    public function getPublicMeshNote()
+    public function getPublicMeshNote(): ?string
     {
         return $this->publicMeshNote;
     }
 
-    /**
-     * @param string $publicMeshNote
-     */
-    public function setPublicMeshNote($publicMeshNote)
+    public function setPublicMeshNote(?string $publicMeshNote): void
     {
         $this->publicMeshNote = $publicMeshNote;
     }
 
-    /**
-     * @return string[]
-     */
-    public function getPreviousIndexing()
+    public function getPreviousIndexing(): array
     {
         return $this->previousIndexing;
     }
 
-    /**
-     * @param string $previousIndexing
-     */
-    public function addPreviousIndexing($previousIndexing)
+    public function addPreviousIndexing(string $previousIndexing): void
     {
         $this->previousIndexing[] = $previousIndexing;
     }
 
-    /**
-     * @return EntryCombination[]
-     */
-    public function getEntryCombinations()
+    public function getEntryCombinations(): array
     {
         return $this->entryCombinations;
     }
 
-    /**
-     * @param EntryCombination $entryCombination
-     */
-    public function addEntryCombination($entryCombination)
+    public function addEntryCombination(EntryCombination $entryCombination): void
     {
         $this->entryCombinations[] = $entryCombination;
     }
 
-    /**
-     * @return Reference[]
-     */
-    public function getRelatedDescriptors()
+    public function getRelatedDescriptors(): array
     {
         return $this->relatedDescriptors;
     }
 
-    /**
-     * @param Reference $reference
-     */
-    public function addRelatedDescriptor(Reference $reference)
+    public function addRelatedDescriptor(Reference $reference): void
     {
         $this->relatedDescriptors[] = $reference;
     }
 
-    /**
-     * @return string
-     */
-    public function getConsiderAlso()
+    public function getConsiderAlso(): ?string
     {
         return $this->considerAlso;
     }
 
-    /**
-     * @param string $considerAlso
-     */
-    public function setConsiderAlso($considerAlso)
+    public function setConsiderAlso(?string $considerAlso): void
     {
         $this->considerAlso = $considerAlso;
     }
 
-    /**
-     * @return Reference[]
-     */
-    public function getPharmacologicalActions()
+    public function getPharmacologicalActions(): array
     {
         return $this->pharmacologicalActions;
     }
 
-    /**
-     * @param Reference $reference
-     */
-    public function addPharmacologicalAction($reference)
+    public function addPharmacologicalAction(Reference $reference): void
     {
         $this->pharmacologicalActions[] = $reference;
     }
 
-    /**
-     * @return string[]
-     */
-    public function getTreeNumbers()
+    public function getTreeNumbers(): array
     {
         return $this->treeNumbers;
     }
 
-    /**
-     * @param string $treeNumber
-     */
-    public function addTreeNumber($treeNumber)
+    public function addTreeNumber(string $treeNumber): void
     {
         $this->treeNumbers[] = $treeNumber;
     }
 
-    /**
-     * @return Concept[]
-     */
-    public function getConcepts()
+    public function getConcepts(): array
     {
         return $this->concepts;
     }
 
-    /**
-     * @param Concept $concept
-     */
-    public function addConcept(Concept $concept)
+    public function addConcept(Concept $concept): void
     {
         $this->concepts[] = $concept;
     }

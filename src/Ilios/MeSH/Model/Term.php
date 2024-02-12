@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
+
+use DateTime;
 
 /**
  * Class Term
@@ -8,209 +12,113 @@ namespace Ilios\MeSH\Model;
  */
 class Term extends Reference
 {
-    /**
-     * @var boolean
-     */
-    protected $permuted;
-    /**
-     * @var boolean
-     */
-    protected $conceptPreferred;
-    /**
-     * @var boolean
-     */
-    protected $recordPreferred;
-    /**
-     * @var string
-     */
-    protected $lexicalTag;
+    protected bool $permuted;
+    protected bool $conceptPreferred;
+    protected bool $recordPreferred;
+    protected string $lexicalTag;
+    protected ?string $abbreviation = null;
+    protected ?string $sortVersion = null;
+    protected ?string $entryVersion = null;
+    protected array $thesaurusIds = [];
+    protected ?string $note = null ;
+    protected ?DateTime $dateCreated = null;
 
-    /**
-     * @var string
-     */
-    protected $abbreviation;
-
-    /**
-     * @var string
-     */
-    protected $sortVersion;
-
-    /**
-     * @var string
-     */
-    protected $entryVersion;
-
-    /**
-     * @var string[]
-     */
-    protected $thesaurusIds = [];
-
-    /**
-     * @var string
-     */
-    protected $note;
-
-    /**
-     * @var \DateTime
-     */
-    protected $dateCreated;
-
-    /**
-     * @return boolean
-     */
-    public function isPermuted()
+    public function isPermuted(): bool
     {
         return $this->permuted;
     }
 
-    /**
-     * @param boolean $permuted
-     */
-    public function setPermuted($permuted)
+    public function setPermuted(bool $permuted): void
     {
         $this->permuted = $permuted;
     }
 
-    /**
-     * @return boolean
-     */
-    public function isConceptPreferred()
+    public function isConceptPreferred(): bool
     {
         return $this->conceptPreferred;
     }
 
-    /**
-     * @param boolean $conceptPreferred
-     */
-    public function setConceptPreferred($conceptPreferred)
+    public function setConceptPreferred(bool $conceptPreferred): void
     {
         $this->conceptPreferred = $conceptPreferred;
     }
 
-    /**
-     * @return boolean
-     */
-    public function isRecordPreferred()
+    public function isRecordPreferred(): bool
     {
         return $this->recordPreferred;
     }
 
-    /**
-     * @param boolean $recordPreferred
-     */
-    public function setRecordPreferred($recordPreferred)
+    public function setRecordPreferred(bool $recordPreferred): void
     {
         $this->recordPreferred = $recordPreferred;
     }
 
-    /**
-     * @return string
-     */
-    public function getLexicalTag()
+    public function getLexicalTag(): string
     {
         return $this->lexicalTag;
     }
 
-    /**
-     * @param string $lexicalTag
-     */
-    public function setLexicalTag($lexicalTag)
+    public function setLexicalTag(string $lexicalTag): void
     {
         $this->lexicalTag = $lexicalTag;
     }
 
-    /**
-     * @return string
-     */
-    public function getAbbreviation()
+    public function getAbbreviation(): ?string
     {
         return $this->abbreviation;
     }
 
-    /**
-     * @param string $abbreviation
-     */
-    public function setAbbreviation($abbreviation)
+    public function setAbbreviation(?string $abbreviation): void
     {
         $this->abbreviation = $abbreviation;
     }
 
-    /**
-     * @return string
-     */
-    public function getSortVersion()
+    public function getSortVersion(): ?string
     {
         return $this->sortVersion;
     }
 
-    /**
-     * @param string $sortVersion
-     */
-    public function setSortVersion($sortVersion)
+    public function setSortVersion(?string $sortVersion): void
     {
         $this->sortVersion = $sortVersion;
     }
 
-    /**
-     * @return string
-     */
-    public function getEntryVersion()
+    public function getEntryVersion(): ?string
     {
         return $this->entryVersion;
     }
 
-    /**
-     * @param string $entryVersion
-     */
-    public function setEntryVersion($entryVersion)
+    public function setEntryVersion(?string $entryVersion): void
     {
         $this->entryVersion = $entryVersion;
     }
 
-    /**
-     * @return string[]
-     */
-    public function getThesaurusIds()
+    public function getThesaurusIds(): array
     {
         return $this->thesaurusIds;
     }
 
-    /**
-     * @param string $thesaurusId
-     */
-    public function addThesaurusId($thesaurusId)
+    public function addThesaurusId(string $thesaurusId): void
     {
         $this->thesaurusIds[] = $thesaurusId;
     }
 
-    /**
-     * @return string
-     */
-    public function getNote()
+    public function getNote(): ?string
     {
         return $this->note;
     }
 
-    /**
-     * @param string $note
-     */
-    public function setNote($note)
+    public function setNote(?string $note): void
     {
         $this->note = $note;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getDateCreated()
+    public function getDateCreated(): ?DateTime
     {
         return $this->dateCreated;
     }
 
-    /**
-     * @param \DateTime $dateCreated
-     */
-    public function setDateCreated($dateCreated)
+    public function setDateCreated(?DateTime $dateCreated): void
     {
         $this->dateCreated = $dateCreated;
     }

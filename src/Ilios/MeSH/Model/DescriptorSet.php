@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
 
 /**
@@ -8,36 +10,21 @@ namespace Ilios\MeSH\Model;
  */
 class DescriptorSet
 {
-    /**
-     * @var Descriptor[]
-     */
-    protected $descriptors = [];
+    protected array $descriptors = [];
+    protected ?string $languageCode = null;
 
-    /**
-     * @var string
-     */
-    protected $languageCode;
 
-    /**
-     * @return string
-     */
-    public function getLanguageCode()
+    public function getLanguageCode(): ?string
     {
         return $this->languageCode;
     }
 
-    /**
-     * @param string $code
-     */
-    public function setLanguageCode($code)
+    public function setLanguageCode(?string $code): void
     {
         $this->languageCode = $code;
     }
 
-    /**
-     * @param \Ilios\MeSH\Model\Descriptor $descriptor
-     */
-    public function addDescriptor(Descriptor $descriptor)
+    public function addDescriptor(Descriptor $descriptor): void
     {
         // @todo check for empty keys and duplicates here. maybe. [ST 2015/03/15]
         $this->descriptors[$descriptor->getUi()] = $descriptor;
@@ -45,18 +32,16 @@ class DescriptorSet
 
     /**
      * Retrieves all descriptors in this set.
-     * @return Descriptor[]
      */
-    public function getDescriptors()
+    public function getDescriptors(): array
     {
         return array_values($this->descriptors);
     }
 
     /**
      * Returns the identifiers of all descriptors in this set.
-     * @return array
      */
-    public function getDescriptorUis()
+    public function getDescriptorUis(): array
     {
         return array_keys($this->descriptors);
     }
@@ -66,7 +51,7 @@ class DescriptorSet
      * @param string $ui The descriptor's identifier.
      * @return bool|Descriptor the descriptor if found, otherwise FALSE.
      */
-    public function findDescriptorByUi($ui)
+    public function findDescriptorByUi(string $ui): bool|Descriptor
     {
         if (array_key_exists($ui, $this->descriptors)) {
             return $this->descriptors[$ui];
