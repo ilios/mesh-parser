@@ -10,11 +10,22 @@ namespace Ilios\MeSH\Model;
  */
 class ConceptRelation
 {
-    use Nameable;
+    protected ?string $name = null;
 
     protected string $concept1Ui;
 
     protected string $concept2Ui;
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
+    }
+
 
     public function getConcept1Ui(): string
     {
