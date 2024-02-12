@@ -23,5 +23,4 @@ class Reference
     {
         $this->name = $name;
     }
-
 }

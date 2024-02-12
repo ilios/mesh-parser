@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH;
 
 use Ilios\MeSH\Model\AllowableQualifier;
@@ -19,75 +21,75 @@ use Ilios\MeSH\Model\Term;
 class Parser
 {
     // Elements
-    const ABBREVIATION = 'Abbreviation';
-    const ALLOWABLE_QUALIFIER = 'AllowableQualifier';
-    const ALLOWABLE_QUALIFIER_LIST = 'AllowableQualifiersList';
-    const ANNOTATION = 'Annotation';
-    const CASN1_NAME = 'CASN1Name';
-    const CONCEPT = 'Concept';
-    const CONCEPT1_UI = 'Concept1UI';
-    const CONCEPT2_UI = 'Concept2UI';
-    const CONCEPT_LIST = 'ConceptList';
-    const CONCEPT_NAME = 'ConceptName';
-    const CONCEPT_RELATION = 'ConceptRelation';
-    const CONCEPT_RELATION_LIST = 'ConceptRelationList';
-    const CONCEPT_UI = 'ConceptUI';
-    const CONSIDER_ALSO = 'ConsiderAlso';
-    const DATE_CREATED = 'DateCreated';
-    const DATE_ESTABLISHED = 'DateEstablished';
-    const DATE_REVISED = 'DateRevised';
-    const DAY = 'Day';
-    const DESCRIPTOR_NAME = 'DescriptorName';
-    const DESCRIPTOR_RECORD = 'DescriptorRecord';
-    const DESCRIPTOR_RECORD_SET = 'DescriptorRecordSet';
-    const DESCRIPTOR_REFERRED_TO = 'DescriptorReferredTo';
-    const DESCRIPTOR_UI = 'DescriptorUI';
-    const ECIN = 'ECIN';
-    const ECOUT = 'ECOUT';
-    const ENTRY_COMBINATION = 'EntryCombination';
-    const ENTRY_COMBINATION_LIST = 'EntryCombinationList';
-    const ENTRY_VERSION = 'EntryVersion';
-    const HISTORY_NOTE = 'HistoryNote';
-    const MONTH = 'Month';
-    const NLM_CLASSIFICATION_NUMBER = 'NLMClassificationNumber';
-    const ONLINE_NOTE = 'OnlineNote';
-    const PHARMACOLOGICAL_ACTION = 'PharmacologicalAction';
-    const PHARMACOLOGICAL_ACTION_LIST = 'PharmacologicalActionList';
-    const PREVIOUS_INDEXING = 'PreviousIndexing';
-    const PREVIOUS_INDEXING_LIST = 'PreviousIndexingList';
-    const PUBLIC_MESH_NOTE = 'PublicMeSHNote';
-    const QUALIFIER_NAME = 'QualifierName';
-    const QUALIFIER_REFERRED_TO = 'QualifierReferredTo';
-    const QUALIFIER_UI = 'QualifierUI';
-    const REGISTRY_NUMBER = 'RegistryNumber';
-    const RELATED_REGISTRY_NUMBER = 'RelatedRegistryNumber';
-    const RELATED_REGISTRY_NUMBER_LIST = 'RelatedRegistryNumberList';
-    const SCOPE_NOTE = 'ScopeNote';
-    const SEE_RELATED_DESCRIPTOR = 'SeeRelatedDescriptor';
-    const SEE_RELATED_LIST = 'SeeRelatedList';
-    const SORT_VERSION = 'SortVersion';
-    const STRING = 'String';
-    const TERM = 'Term';
-    const TERM_LIST = 'TermList';
-    const TERM_NOTE = 'TermNote';
-    const TERM_UI = 'TermUI';
-    const THESAURUS_ID = 'ThesaurusID';
-    const THESAURUS_ID_LIST = 'ThesaurusIDlist';
-    const TRANSLATORS_ENGLISH_SCOPE_NOTE = 'TranslatorsEnglishScopeNote';
-    const TRANSLATORS_SCOPE_NOTE = 'TranslatorsScopeNote';
-    const TREE_NUMBER = 'TreeNumber';
-    const TREE_NUMBER_LIST = 'TreeNumberList';
-    const YEAR = 'Year';
+    public const ABBREVIATION = 'Abbreviation';
+    public const ALLOWABLE_QUALIFIER = 'AllowableQualifier';
+    public const ALLOWABLE_QUALIFIER_LIST = 'AllowableQualifiersList';
+    public const ANNOTATION = 'Annotation';
+    public const CASN1_NAME = 'CASN1Name';
+    public const CONCEPT = 'Concept';
+    public const CONCEPT1_UI = 'Concept1UI';
+    public const CONCEPT2_UI = 'Concept2UI';
+    public const CONCEPT_LIST = 'ConceptList';
+    public const CONCEPT_NAME = 'ConceptName';
+    public const CONCEPT_RELATION = 'ConceptRelation';
+    public const CONCEPT_RELATION_LIST = 'ConceptRelationList';
+    public const CONCEPT_UI = 'ConceptUI';
+    public const CONSIDER_ALSO = 'ConsiderAlso';
+    public const DATE_CREATED = 'DateCreated';
+    public const DATE_ESTABLISHED = 'DateEstablished';
+    public const DATE_REVISED = 'DateRevised';
+    public const DAY = 'Day';
+    public const DESCRIPTOR_NAME = 'DescriptorName';
+    public const DESCRIPTOR_RECORD = 'DescriptorRecord';
+    public const DESCRIPTOR_RECORD_SET = 'DescriptorRecordSet';
+    public const DESCRIPTOR_REFERRED_TO = 'DescriptorReferredTo';
+    public const DESCRIPTOR_UI = 'DescriptorUI';
+    public const ECIN = 'ECIN';
+    public const ECOUT = 'ECOUT';
+    public const ENTRY_COMBINATION = 'EntryCombination';
+    public const ENTRY_COMBINATION_LIST = 'EntryCombinationList';
+    public const ENTRY_VERSION = 'EntryVersion';
+    public const HISTORY_NOTE = 'HistoryNote';
+    public const MONTH = 'Month';
+    public const NLM_CLASSIFICATION_NUMBER = 'NLMClassificationNumber';
+    public const ONLINE_NOTE = 'OnlineNote';
+    public const PHARMACOLOGICAL_ACTION = 'PharmacologicalAction';
+    public const PHARMACOLOGICAL_ACTION_LIST = 'PharmacologicalActionList';
+    public const PREVIOUS_INDEXING = 'PreviousIndexing';
+    public const PREVIOUS_INDEXING_LIST = 'PreviousIndexingList';
+    public const PUBLIC_MESH_NOTE = 'PublicMeSHNote';
+    public const QUALIFIER_NAME = 'QualifierName';
+    public const QUALIFIER_REFERRED_TO = 'QualifierReferredTo';
+    public const QUALIFIER_UI = 'QualifierUI';
+    public const REGISTRY_NUMBER = 'RegistryNumber';
+    public const RELATED_REGISTRY_NUMBER = 'RelatedRegistryNumber';
+    public const RELATED_REGISTRY_NUMBER_LIST = 'RelatedRegistryNumberList';
+    public const SCOPE_NOTE = 'ScopeNote';
+    public const SEE_RELATED_DESCRIPTOR = 'SeeRelatedDescriptor';
+    public const SEE_RELATED_LIST = 'SeeRelatedList';
+    public const SORT_VERSION = 'SortVersion';
+    public const STRING = 'String';
+    public const TERM = 'Term';
+    public const TERM_LIST = 'TermList';
+    public const TERM_NOTE = 'TermNote';
+    public const TERM_UI = 'TermUI';
+    public const THESAURUS_ID = 'ThesaurusID';
+    public const THESAURUS_ID_LIST = 'ThesaurusIDlist';
+    public const TRANSLATORS_ENGLISH_SCOPE_NOTE = 'TranslatorsEnglishScopeNote';
+    public const TRANSLATORS_SCOPE_NOTE = 'TranslatorsScopeNote';
+    public const TREE_NUMBER = 'TreeNumber';
+    public const TREE_NUMBER_LIST = 'TreeNumberList';
+    public const YEAR = 'Year';
 
     // Attributes
-    const CONCEPT_PREFERRED_TERM_YN = 'ConceptPreferredTermYN';
-    const DESCRIPTOR_CLASS = 'DescriptorClass';
-    const IS_PERMUTED_TERM_YN = 'IsPermutedTermYN';
-    const LANGUAGE_CODE = 'LanguageCode';
-    const LEXICAL_TAG = 'LexicalTag';
-    const PREFERRED_CONCEPT_YN = 'PreferredConceptYN';
-    const RECORD_PREFERRED_TERM_YN = 'RecordPreferredTermYN';
-    const RELATION_NAME = 'RelationName';
+    public const CONCEPT_PREFERRED_TERM_YN = 'ConceptPreferredTermYN';
+    public const DESCRIPTOR_CLASS = 'DescriptorClass';
+    public const IS_PERMUTED_TERM_YN = 'IsPermutedTermYN';
+    public const LANGUAGE_CODE = 'LanguageCode';
+    public const LEXICAL_TAG = 'LexicalTag';
+    public const PREFERRED_CONCEPT_YN = 'PreferredConceptYN';
+    public const RECORD_PREFERRED_TERM_YN = 'RecordPreferredTermYN';
+    public const RELATION_NAME = 'RelationName';
 
     /**
      * @var \XMLReader
@@ -133,7 +135,7 @@ class Parser
 
         $reader = $this->reader;
         if (!@$reader->open($uri)) {
-            throw new \Exception('XML reader failed to open '.$uri.'.');
+            throw new \Exception('XML reader failed to open ' . $uri . '.');
         };
 
         // start reading the XML File.
