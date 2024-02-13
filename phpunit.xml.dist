@@ -15,4 +15,19 @@
       <directory>tests</directory>
     </testsuite>
   </testsuites>
+
+  <source>
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+  </source>
+
+  <!-- un-comment the following block before running code coverage tests -->
+  <!--
+  <coverage>
+    <report>
+      <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
+    </report>
+  </coverage>
+  -->
 </phpunit>

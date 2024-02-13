@@ -4,3 +4,4 @@
 /vendor/
 .phpunit.cache
 .phpcs-cache
+html-coverage
