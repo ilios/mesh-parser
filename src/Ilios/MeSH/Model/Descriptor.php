@@ -30,7 +30,7 @@ class Descriptor extends Reference
 
     protected ?string $onlineNote = null;
 
-    protected ?string $publicMeshNote;
+    protected ?string $publicMeshNote = null;
 
     protected array $previousIndexing = [];
 
