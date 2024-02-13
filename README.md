@@ -30,7 +30,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 // provide a URL or a local file path.
 //$uri = 'https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/xmlmesh/desc2024.xml';
-$uri = __DIR__ . '/desc2019.xml';
+$uri = __DIR__ . '/desc2024.xml';
 
 // instantiate the parser and parse the input.
 $parser = new \Ilios\MeSH\Parser();
