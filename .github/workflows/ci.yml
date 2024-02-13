@@ -28,6 +28,8 @@ jobs:
       run: composer install --no-interaction --prefer-dist
     - name: lint PHP
       run: bin/phpcs
+    - name: static code analysis
+      run: bin/phpstan
 
   tests:
     name: PHPUnit Tests
