@@ -22,7 +22,8 @@
     "mockery/mockery": "@stable",
     "phpunit/phpunit": "@stable",
     "squizlabs/php_codesniffer": "@stable",
-    "fakerphp/faker": "@stable"
+    "fakerphp/faker": "@stable",
+    "phpstan/phpstan": "^1.10"
   },
   "autoload": {
     "psr-4": {
