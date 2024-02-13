@@ -1,7 +1,9 @@
 *~
 *.patch
 /bin/*
+/html-coverage/
 /vendor/
 .phpunit.cache
 .phpcs-cache
-html-coverage
+phpunit.xml
+
