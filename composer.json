@@ -17,6 +17,7 @@
   ],
   "require": {
     "php": ">=8.2",
+    "ext-dom": "*",
     "ext-xmlreader": "*"
   },
   "require-dev": {
