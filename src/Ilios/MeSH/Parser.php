@@ -232,9 +232,6 @@ class Parser
                         }
                         break;
                     case self::ECIN:
-                        $currentDescriptorReference = new Reference();
-                        $currentQualifierReference = new Reference();
-                        break;
                     case self::ECOUT:
                         $currentDescriptorReference = new Reference();
                         $currentQualifierReference = new Reference();
@@ -259,6 +256,7 @@ class Parser
                         $currentDescriptor->setOnlineNote($note);
                         break;
                     case self::PHARMACOLOGICAL_ACTION:
+                    case self::SEE_RELATED_DESCRIPTOR:
                         $currentDescriptorReference = new Reference();
                         break;
                     case self::PREVIOUS_INDEXING:
@@ -291,9 +289,6 @@ class Parser
                     case self::SCOPE_NOTE:
                         $note = $this->getNodeContents($reader);
                         $currentConcept->setScopeNote($note);
-                        break;
-                    case self::SEE_RELATED_DESCRIPTOR:
-                        $currentDescriptorReference = new Reference();
                         break;
                     case self::SORT_VERSION:
                         $version = $this->getNodeContents($reader);
