@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Ilios\MeSH;
 
+use DateTime;
+use DateTimeZone;
+use DOMNode;
+use Exception;
 use Ilios\MeSH\Model\AllowableQualifier;
 use Ilios\MeSH\Model\Concept;
 use Ilios\MeSH\Model\ConceptRelation;
@@ -12,6 +16,7 @@ use Ilios\MeSH\Model\DescriptorSet;
 use Ilios\MeSH\Model\EntryCombination;
 use Ilios\MeSH\Model\Reference;
 use Ilios\MeSH\Model\Term;
+use XMLReader;
 
 /**
  * Class Parser
@@ -90,58 +95,54 @@ class Parser
     public const PREFERRED_CONCEPT_YN = 'PreferredConceptYN';
     public const RECORD_PREFERRED_TERM_YN = 'RecordPreferredTermYN';
     public const RELATION_NAME = 'RelationName';
-
-    /**
-     * @var \XMLReader
-     */
-    protected $reader;
+    protected XMLReader $reader;
 
     /**
      * Parser constructor.
      */
     public function __construct()
     {
-        $this->reader = new \XMLReader();
+        $this->reader = new XMLReader();
     }
 
     /**
      * Parses a given descriptors XML file into an object model.
-     * @param string $uri An URI pointing at that file.
+     * @param string $uri A URI pointing at that file.
      * @return DescriptorSet The set of parsed descriptors.
-     * @throws \Exception
+     * @throws Exception
      */
-    public function parse($uri)
+    public function parse(string $uri): DescriptorSet
     {
-        /* @var Concept */
+        /* @var Concept $currentConcept */
         $currentConcept = null;
-        /* @var AllowableQualifier */
+        /* @var AllowableQualifier $currentAllowableQualifier */
         $currentAllowableQualifier = null;
-        /* @var ConceptRelation */
+        /* @var ConceptRelation $currentConceptRelation */
         $currentConceptRelation = null;
-        /* @var Descriptor */
+        /* @var Descriptor $currentDescriptor */
         $currentDescriptor = null;
-        /* @var EntryCombination */
+        /* @var EntryCombination $currentEntryCombination */
         $currentEntryCombination = null;
-        /* @var Reference */
+        /* @var Reference $currentDescriptorReference */
         $currentDescriptorReference = null;
-        /* @var Reference */
+        /* @var Reference $currentConceptReference */
         $currentConceptReference = null;
-        /* @var Reference */
+        /* @var Reference $currentQualifierReference */
         $currentQualifierReference = null;
-        /* @var Term */
+        /* @var Term $currentTerm */
         $currentTerm = null;
 
         $descriptors = new DescriptorSet();
 
         $reader = $this->reader;
         if (!@$reader->open($uri)) {
-            throw new \Exception('XML reader failed to open ' . $uri . '.');
-        };
+            throw new Exception('XML reader failed to open ' . $uri . '.');
+        }
 
         // start reading the XML File.
         while ($reader->read()) {
             $nodeType = $reader->nodeType;
-            if (\XMLReader::ELEMENT === $nodeType) {
+            if (XMLReader::ELEMENT === $nodeType) {
                 switch ($reader->name) {
                     case self::ABBREVIATION:
                         $abbreviation = $this->getNodeContents($reader);
@@ -350,7 +351,7 @@ class Parser
                         $currentDescriptor->addTreeNumber($number);
                         break;
                 }
-            } elseif (\XMLReader::END_ELEMENT === $nodeType) {
+            } elseif (XMLReader::END_ELEMENT === $nodeType) {
                 switch ($reader->name) {
                     case self::ALLOWABLE_QUALIFIER:
                         $currentAllowableQualifier->setQualifierReference($currentQualifierReference);
@@ -407,11 +408,11 @@ class Parser
     }
 
     /**
-     * @param \DOMNode $node
-     * @return \DateTime
-     * @throws \Exception
+     * @param DOMNode $node
+     * @return DateTime
+     * @throws Exception
      */
-    protected function getDateFromNode(\DOMNode $node)
+    protected function getDateFromNode(DOMNode $node): DateTime
     {
         $children = $node->childNodes;
         $ymd = [];
@@ -429,24 +430,24 @@ class Parser
             }
         }
         if (3 !== count($ymd)) {
-            throw new \Exception(
+            throw new Exception(
                 sprintf('Could not retrieve Year/Month/Day info from node "%s".', $node->nodeName)
             );
         }
-        $dt = new \DateTime();
-        $dt->setTimezone(new \DateTimeZone('UTC'));
-        $dt->setTime(0, 0, 0);
+        $dt = new DateTime();
+        $dt->setTimezone(new DateTimeZone('UTC'));
+        $dt->setTime(0, 0);
         $dt->setDate($ymd['year'], $ymd['month'], $ymd['day']);
 
         return $dt;
     }
 
     /**
-     * @param \DOMNode $node
+     * @param DOMNode $node
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
-    protected function getStringNodeContents(\DOMNode $node)
+    protected function getStringNodeContents(DOMNode $node): string
     {
         $children = $node->childNodes;
         $contents = false;
@@ -457,7 +458,7 @@ class Parser
             }
         }
         if (false === $contents) {
-            throw new \Exception(
+            throw new Exception(
                 sprintf('Node "%s" does not contain a child node of type "String".', $node->nodeName)
             );
         }
@@ -469,10 +470,10 @@ class Parser
      * Wrapper around <code>XMLReader::readString()</code> that trims any
      * whitespace off of node contents.
      *
-     * @param \XMLReader $reader
+     * @param XMLReader $reader
      * @return string
      */
-    protected function getNodeContents(\XMLReader $reader)
+    protected function getNodeContents(XMLReader $reader): string
     {
         return trim($reader->readString());
     }
