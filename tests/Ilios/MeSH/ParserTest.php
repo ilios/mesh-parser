@@ -167,6 +167,8 @@ EOL;
         $this->assertEquals('a casn1 name', $concept->getCasn1Name());
         $this->assertEquals('00000AAAAA', $concept->getRegistryNumber());
         $this->assertEquals('a scope note', $concept->getScopeNote());
+        $this->assertEquals('something in English.', $concept->getTranslatorsEnglishScopeNote());
+        $this->assertEquals('i got nothing', $concept->getTranslatorsScopeNote());
 
         $registryNumbers = $concept->getRelatedRegistryNumbers();
         $this->assertEquals(1, count($registryNumbers));
@@ -187,6 +189,9 @@ EOL;
         $this->assertEquals('T000001', $terms[0]->getUi());
         $this->assertEquals('a term', $terms[0]->getName());
         $this->assertEquals('1999/01/01', $terms[0]->getDateCreated()->format('Y/m/d'));
+        $this->assertEquals('IDK', $terms[0]->getAbbreviation());
+        $this->assertEquals('lorem ipsum', $terms[0]->getSortVersion());
+        $this->assertEquals('foo bar', $terms[0]->getEntryVersion());
 
         $thesaurusIds = $terms[0]->getThesaurusIds();
         $this->assertEquals(2, count($thesaurusIds));

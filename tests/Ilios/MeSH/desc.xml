@@ -135,6 +135,8 @@ It contains all possible elements defined by the schema.
                 <CASN1Name>a casn1 name</CASN1Name>
                 <RegistryNumber>00000AAAAA</RegistryNumber>
                 <ScopeNote>a scope note</ScopeNote>
+                <TranslatorsEnglishScopeNote>something in English.</TranslatorsEnglishScopeNote>
+                <TranslatorsScopeNote>i got nothing</TranslatorsScopeNote>
                 <RelatedRegistryNumberList>
                     <RelatedRegistryNumber>a related registry number</RelatedRegistryNumber>
                 </RelatedRegistryNumberList>
@@ -153,6 +155,9 @@ It contains all possible elements defined by the schema.
                             <Month>01</Month>
                             <Day>01</Day>
                         </DateCreated>
+                        <Abbreviation>IDK</Abbreviation>
+                        <SortVersion>lorem ipsum</SortVersion>
+                        <EntryVersion>foo bar</EntryVersion>
                         <ThesaurusIDlist>
                             <ThesaurusID>a thesaurus id</ThesaurusID>
                             <ThesaurusID>another thesaurus id</ThesaurusID>
