@@ -1,0 +1,55 @@
+name: Update Dependencies
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 14 * * 1' # weekly, on Monday morning (UTC)
+
+env:
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_ILIOS_DEPLOYMENT_WEBHOOK_URL }}
+
+jobs:
+  update:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: none
+          php-version: 8.2
+          extensions: apcu
+      - name: install composer-lock-diff
+        run: composer global require davidrjonas/composer-lock-diff
+      - name: update dependencies
+        run: composer update
+      - name: Prepare Messages
+        id: vars
+        run: |
+          lockDiff="$(composer-lock-diff --md)"
+          # We have to manually escape new lines
+          lockDiff="${lockDiff//$'\n'/'%0A'}"
+          echo ::set-output name=pr_title::"Update Dependencies"
+          echo ::set-output name=commit_message::"Update Dependencies \
+          
+          
+          ${lockDiff}."
+          echo ::set-output name=pr_body::"${lockDiff}"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.ZORGBORT_TOKEN }}
+          title: ${{ steps.vars.outputs.pr_title }}
+          body: ${{ steps.vars.outputs.pr_body }}
+          commit-message: ${{ steps.vars.outputs.commit_message }}
+          branch: auto-update-dependencies
+          committer: Zorgbort <info@iliosproject.org>
+          author: Zorgbort <info@iliosproject.org>
+          labels: dependencies
+      - uses: act10ns/slack@v2.0.0
+        with:
+          status: ${{ job.status }}
+          message: Update Dependency Job Failed {{ env.GITHUB_SERVER_URL }}/{{ env.GITHUB_REPOSITORY }}/actions/runs/{{ env.GITHUB_RUN_ID }}
+        if: failure()
