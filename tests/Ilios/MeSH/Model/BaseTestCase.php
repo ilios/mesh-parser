@@ -136,8 +136,9 @@ abstract class BaseTestCase extends TestCase
      * @param object $model
      * @param string $property
      * @param string $modelName
+     * @param bool $nullable if TRUE then an additional getter/setter check for NULL is performed.
      */
-    protected function modelSetTest(object $model, string $property, string $modelName): void
+    protected function modelSetTest(object $model, string $property, string $modelName, bool $nullable = false): void
     {
         $setMethod = $this->getSetMethodForProperty($property);
         $getMethod = $this->getGetMethodForProperty($property);
@@ -146,6 +147,10 @@ abstract class BaseTestCase extends TestCase
         $expected = m::mock('Ilios\\MeSH\\Model\\' . $modelName);
         $model->$setMethod($expected);
         $this->assertSame($expected, $model->$getMethod());
+        if ($nullable) {
+            $model->$setMethod(null);
+            $this->assertNull($model->$getMethod());
+        }
     }
 
     /**
