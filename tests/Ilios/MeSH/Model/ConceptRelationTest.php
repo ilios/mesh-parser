@@ -30,7 +30,7 @@ class ConceptRelationTest extends BaseTestCase
 
     public function testGetSetName(): void
     {
-        $this->basicSetTest($this->object, 'name', 'string');
+        $this->basicSetTest($this->object, 'name', 'string', true);
     }
 
     public function testGetSetConcept1Ui(): void

@@ -49,17 +49,17 @@ class TermTest extends BaseTestCase
 
     public function testGetSetAbbreviation(): void
     {
-        $this->basicSetTest($this->object, 'abbreviation', 'string');
+        $this->basicSetTest($this->object, 'abbreviation', 'string', true);
     }
 
     public function testGetSetSortVersion(): void
     {
-        $this->basicSetTest($this->object, 'sortVersion', 'string');
+        $this->basicSetTest($this->object, 'sortVersion', 'string', true);
     }
 
     public function testGetSetEntryVersion(): void
     {
-        $this->basicSetTest($this->object, 'entryVersion', 'string');
+        $this->basicSetTest($this->object, 'entryVersion', 'string', true);
     }
 
     public function testAddGetThesaurusIds(): void
@@ -69,12 +69,12 @@ class TermTest extends BaseTestCase
 
     public function testGetSetNote(): void
     {
-        $this->basicSetTest($this->object, 'note', 'string');
+        $this->basicSetTest($this->object, 'note', 'string', true);
     }
 
     public function testGetDateCreated(): void
     {
-        $this->basicSetTest($this->object, 'dateCreated', 'datetime');
+        $this->basicSetTest($this->object, 'dateCreated', 'datetime', true);
     }
 
     public function testGetSetUi(): void

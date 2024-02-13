@@ -30,7 +30,7 @@ class DescriptorSetTest extends BaseTestCase
 
     public function testGetSetLanguageCode(): void
     {
-        $this->basicSetTest($this->object, 'languageCode', 'string');
+        $this->basicSetTest($this->object, 'languageCode', 'string', true);
     }
 
     public function testAddGetDescriptors(): void

@@ -41,12 +41,12 @@ class DescriptorTest extends BaseTestCase
 
     public function testGetSetDateRevised(): void
     {
-        $this->basicSetTest($this->object, 'dateRevised', 'datetime');
+        $this->basicSetTest($this->object, 'dateRevised', 'datetime', true);
     }
 
     public function testGetSetDateEstablished(): void
     {
-        $this->basicSetTest($this->object, 'dateEstablished', 'datetime');
+        $this->basicSetTest($this->object, 'dateEstablished', 'datetime', true);
     }
 
     public function testAddGetAllowableQualifiers(): void
@@ -56,27 +56,27 @@ class DescriptorTest extends BaseTestCase
 
     public function testGetSetAnnotation(): void
     {
-        $this->basicSetTest($this->object, 'annotation', 'string');
+        $this->basicSetTest($this->object, 'annotation', 'string', true);
     }
 
     public function testGetSetHistoryNote(): void
     {
-        $this->basicSetTest($this->object, 'historyNote', 'string');
+        $this->basicSetTest($this->object, 'historyNote', 'string', true);
     }
 
     public function testNlmClassificationNumber(): void
     {
-        $this->basicSetTest($this->object, 'nlmClassificationNumber', 'string');
+        $this->basicSetTest($this->object, 'nlmClassificationNumber', 'string', true);
     }
 
     public function testGetSetOnlineNote(): void
     {
-        $this->basicSetTest($this->object, 'onlineNote', 'string');
+        $this->basicSetTest($this->object, 'onlineNote', 'string', true);
     }
 
     public function testGetSetPublicMeshNote(): void
     {
-        $this->basicSetTest($this->object, 'publicMeshNote', 'string');
+        $this->basicSetTest($this->object, 'publicMeshNote', 'string', true);
     }
 
     public function testAddGetPreviousIndexing(): void
@@ -96,7 +96,7 @@ class DescriptorTest extends BaseTestCase
 
     public function testGetSetConsiderAlso(): void
     {
-        $this->basicSetTest($this->object, 'considerAlso', 'string');
+        $this->basicSetTest($this->object, 'considerAlso', 'string', true);
     }
 
     public function testAddGetPharmacologicalAction(): void

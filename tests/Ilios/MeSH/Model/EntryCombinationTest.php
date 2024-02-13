@@ -45,6 +45,6 @@ class EntryCombinationTest extends BaseTestCase
 
     public function testGetSetQualifierOut(): void
     {
-        $this->modelSetTest($this->object, 'qualifierOut', 'Reference');
+        $this->modelSetTest($this->object, 'qualifierOut', 'Reference', true);
     }
 }

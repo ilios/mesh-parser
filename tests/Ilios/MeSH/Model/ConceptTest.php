@@ -41,27 +41,27 @@ class ConceptTest extends BaseTestCase
 
     public function testGetSetCasn1Name(): void
     {
-        $this->basicSetTest($this->object, 'casn1Name', 'string');
+        $this->basicSetTest($this->object, 'casn1Name', 'string', true);
     }
 
     public function testGetSetRegistryNumber(): void
     {
-        $this->basicSetTest($this->object, 'registryNumber', 'string');
+        $this->basicSetTest($this->object, 'registryNumber', 'string', true);
     }
 
     public function testGetSetScopeNote(): void
     {
-        $this->basicSetTest($this->object, 'scopeNote', 'string');
+        $this->basicSetTest($this->object, 'scopeNote', 'string', true);
     }
 
     public function testGetSetTranslatorsEnglishScopeNote(): void
     {
-        $this->basicSetTest($this->object, 'translatorsEnglishScopeNote', 'string');
+        $this->basicSetTest($this->object, 'translatorsEnglishScopeNote', 'string', true);
     }
 
     public function testGetSetTranslatorsScopeNote(): void
     {
-        $this->basicSetTest($this->object, 'translatorsScopeNote', 'string');
+        $this->basicSetTest($this->object, 'translatorsScopeNote', 'string', true);
     }
 
     public function testAddGetRelatedRegistryNumbers(): void
