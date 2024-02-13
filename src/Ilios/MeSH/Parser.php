@@ -113,8 +113,6 @@ class Parser
         $currentEntryCombination = null;
         /* @var Reference $currentDescriptorReference */
         $currentDescriptorReference = null;
-        /* @var Reference $currentConceptReference */
-        $currentConceptReference = null;
         /* @var Reference $currentQualifierReference */
         $currentQualifierReference = null;
         /* @var Term $currentTerm */
@@ -165,11 +163,7 @@ class Parser
                         break;
                     case self::CONCEPT_NAME:
                         $name = $this->getStringNodeContents($reader->expand());
-                        if ($currentConceptReference) {
-                            $currentConceptReference->setName($name);
-                        } else {
-                            $currentConcept->setName($name);
-                        }
+                        $currentConcept->setName($name);
                         break;
                     case self::CONCEPT_RELATION:
                         $currentConceptRelation = new ConceptRelation();
@@ -180,11 +174,7 @@ class Parser
                         break;
                     case self::CONCEPT_UI:
                         $ui = $this->getNodeContents($reader);
-                        if ($currentConceptReference) {
-                            $currentConceptReference->setUi($ui);
-                        } else {
-                            $currentConcept->setUi($ui);
-                        }
+                        $currentConcept->setUi($ui);
                         break;
                     case self::CONSIDER_ALSO:
                         $also = $this->getNodeContents($reader);
