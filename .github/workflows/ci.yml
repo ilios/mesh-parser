@@ -26,10 +26,8 @@ jobs:
         php-version: ${{ matrix.php-version }}
     - name: install dependencies
       run: composer install --no-interaction --prefer-dist
-    - name: lint src
-      run: bin/phpcs src
-    - name: lint tests
-      run: bin/phpcs tests
+    - name: lint PHP
+      run: bin/phpcs
 
   tests:
     name: PHPUnit Tests
