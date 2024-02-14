@@ -32,65 +32,36 @@ abstract class BaseTestCase extends TestCase
         return $arr;
     }
 
-    /**
-     * @param  string $property
-     * @return string
-     */
     protected function getSetMethodForProperty(string $property): string
     {
         return 'set' . ucfirst($property);
     }
 
-    /**
-     * @param  string $property
-     * @return string
-     */
     protected function getGetMethodForProperty(string $property): string
     {
         return 'get' . ucfirst($property);
     }
 
-    /**
-     * @param  string $property
-     * @return string
-     */
     protected function getIsMethodForProperty(string $property): string
     {
         return 'is' . ucfirst($property);
     }
 
-    /**
-     * @param  string $property
-     * @return string
-     */
     protected function getHasMethodForProperty(string $property): string
     {
         return 'has' . ucfirst($property);
     }
 
-    /**
-     * @param  string $property
-     * @return string
-     */
     protected function getGetMethodForListProperty(string $property): string
     {
         return 'get' . ucfirst($property) . 's';
     }
 
-    /**
-     * @param  string $property
-     * @return string
-     */
     protected function getAddMethodForProperty(string $property): string
     {
         return 'add' . ucfirst($property);
     }
 
-    /**
-     * @param  string $type
-     * @return DateTime|float|int|bool|string
-     * @throws Exception
-     */
     protected function getValueForType(string $type): mixed
     {
         $faker = faker::create();
