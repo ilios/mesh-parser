@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
 
 /**
@@ -8,23 +10,14 @@ namespace Ilios\MeSH\Model;
  */
 trait Identifiable
 {
-    /**
-     * @var string
-     */
-    protected $ui;
+    protected string $ui;
 
-    /**
-     * @return string
-     */
-    public function getUi()
+    public function getUi(): string
     {
         return $this->ui;
     }
 
-    /**
-     * @param $ui
-     */
-    public function setUi($ui)
+    public function setUi(string $ui): void
     {
         $this->ui = $ui;
     }

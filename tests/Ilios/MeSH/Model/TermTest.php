@@ -1,122 +1,89 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
+
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class TermTest
+ *
  * @package Ilios\MeSH\Model
  */
-class TermTest extends ReferenceTest
+#[CoversClass(Term::class)]
+class TermTest extends BaseTestCase
 {
-    /**
-     * @var Term
-     */
-    protected $object;
+    protected Term $object;
 
-    /**
-     * @inheritdoc
-     */
     public function setUp(): void
     {
         parent::setUp();
         $this->object = new Term();
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Term::__construct
-     */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $this->assertEmpty($this->object->getThesaurusIds());
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Term::isPermuted
-     * @covers \Ilios\MeSH\Model\Term::setPermuted
-     */
-    public function testIsSetPermuted()
+    public function testIsSetPermuted(): void
     {
-        $this->booleanSetTest($this->object, 'permuted', true);
+        $this->booleanSetTest($this->object, 'permuted');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Term::isConceptPreferred
-     * @covers \Ilios\MeSH\Model\Term::setConceptPreferred
-     */
-    public function testIsSetConceptPreferred()
+    public function testIsSetConceptPreferred(): void
     {
-        $this->booleanSetTest($this->object, 'conceptPreferred', true);
+        $this->booleanSetTest($this->object, 'conceptPreferred');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Term::isRecordPreferred
-     * @covers \Ilios\MeSH\Model\Term::setRecordPreferred
-     */
-    public function testIsSetRecordPreferred()
+    public function testIsSetRecordPreferred(): void
     {
-        $this->booleanSetTest($this->object, 'recordPreferred', true);
+        $this->booleanSetTest($this->object, 'recordPreferred');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Term::getLexicalTag
-     * @covers \Ilios\MeSH\Model\Term::setLexicalTag
-     */
-    public function testGetSetLexicalTag()
+    public function testGetSetLexicalTag(): void
     {
         $this->basicSetTest($this->object, 'lexicalTag', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Term::getAbbreviation
-     * @covers \Ilios\MeSH\Model\Term::setAbbreviation
-     */
-    public function testGetSetAbbreviation()
+    public function testGetSetAbbreviation(): void
     {
-        $this->basicSetTest($this->object, 'abbreviation', 'string');
+        $this->basicSetTest($this->object, 'abbreviation', 'string', true);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Term::getSortVersion
-     * @covers \Ilios\MeSH\Model\Term::setSortVersion
-     */
-    public function testGetSetSortVersion()
+    public function testGetSetSortVersion(): void
     {
-        $this->basicSetTest($this->object, 'sortVersion', 'string');
+        $this->basicSetTest($this->object, 'sortVersion', 'string', true);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Term::getEntryVersion
-     * @covers \Ilios\MeSH\Model\Term::setEntryVersion
-     */
-    public function testGetSetEntryVersion()
+    public function testGetSetEntryVersion(): void
     {
-        $this->basicSetTest($this->object, 'entryVersion', 'string');
+        $this->basicSetTest($this->object, 'entryVersion', 'string', true);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Term::addThesaurusId
-     * @covers \Ilios\MeSH\Model\Term::getThesaurusIds
-     */
-    public function testAddGetThesaurusIds()
+    public function testAddGetThesaurusIds(): void
     {
         $this->addTextToListTest($this->object, 'thesaurusId');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Term::getNote
-     * @covers \Ilios\MeSH\Model\Term::setNote
-     */
-    public function testGetSetNote()
+    public function testGetSetNote(): void
     {
-        $this->basicSetTest($this->object, 'note', 'string');
+        $this->basicSetTest($this->object, 'note', 'string', true);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\Term::getDateCreated
-     * @covers \Ilios\MeSH\Model\Term::setDateCreated
-     */
-    public function testGetDateCreated()
+    public function testGetDateCreated(): void
     {
-        $this->basicSetTest($this->object, 'dateCreated', 'datetime');
+        $this->basicSetTest($this->object, 'dateCreated', 'datetime', true);
+    }
+
+    public function testGetSetUi(): void
+    {
+        $this->basicSetTest($this->object, 'ui', 'string');
+    }
+
+    public function testGetSetName(): void
+    {
+        $this->basicSetTest($this->object, 'name', 'string');
     }
 }

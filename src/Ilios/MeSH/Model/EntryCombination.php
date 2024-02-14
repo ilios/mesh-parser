@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
 
 /**
@@ -10,88 +12,60 @@ class EntryCombination
 {
     /**
      * Inbound descriptor reference.
-     * @var Reference
      */
-    protected $descriptorIn;
+    protected Reference $descriptorIn;
 
     /**
      * Outbound descriptor reference.
-     * @var Reference
      */
-    protected $descriptorOut;
+    protected Reference $descriptorOut;
 
     /**
      * Inbound qualifier reference.
-     * @var Reference
      */
-    protected $qualifierIn;
+    protected Reference $qualifierIn;
 
     /**
      * Outbound qualifier reference.
-     * @var Reference
      */
-    protected $qualifierOut;
+    protected ?Reference $qualifierOut = null;
 
-    /**
-     * @return Reference
-     */
-    public function getDescriptorIn()
+    public function getDescriptorIn(): Reference
     {
         return $this->descriptorIn;
     }
 
-    /**
-     * @param Reference $descriptorIn
-     */
-    public function setDescriptorIn(Reference $descriptorIn)
+    public function setDescriptorIn(Reference $descriptorIn): void
     {
         $this->descriptorIn = $descriptorIn;
     }
 
-    /**
-     * @return Reference
-     */
-    public function getDescriptorOut()
+    public function getDescriptorOut(): Reference
     {
         return $this->descriptorOut;
     }
 
-    /**
-     * @param Reference $descriptorOut
-     */
-    public function setDescriptorOut(Reference $descriptorOut)
+    public function setDescriptorOut(Reference $descriptorOut): void
     {
         $this->descriptorOut = $descriptorOut;
     }
 
-    /**
-     * @return Reference
-     */
-    public function getQualifierIn()
+    public function getQualifierIn(): Reference
     {
         return $this->qualifierIn;
     }
 
-    /**
-     * @param Reference $qualifierIn
-     */
-    public function setQualifierIn(Reference $qualifierIn)
+    public function setQualifierIn(Reference $qualifierIn): void
     {
         $this->qualifierIn = $qualifierIn;
     }
 
-    /**
-     * @return Reference
-     */
-    public function getQualifierOut()
+    public function getQualifierOut(): ?Reference
     {
         return $this->qualifierOut;
     }
 
-    /**
-     * @param Reference $qualifierOut
-     */
-    public function setQualifierOut(Reference $qualifierOut)
+    public function setQualifierOut(?Reference $qualifierOut): void
     {
         $this->qualifierOut = $qualifierOut;
     }

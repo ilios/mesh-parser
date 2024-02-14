@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
 
 /**
@@ -8,190 +10,110 @@ namespace Ilios\MeSH\Model;
  */
 class Concept extends Reference
 {
-    /**
-     * @var boolean
-     */
-    protected $preferred;
+    protected bool $preferred;
 
-    /**
-     * @var string
-     */
-    protected $casn1Name;
+    protected ?string $casn1Name = null;
 
-    /**
-     * @var string
-     */
-    protected $registryNumber;
-    /**
-     * @var string
-     */
-    protected $scopeNote;
+    protected ?string $registryNumber = null;
 
-    /**
-     * @var string
-     */
-    protected $translatorsEnglishScopeNote;
+    protected ?string $scopeNote = null;
 
-    /**
-     * @var string
-     */
-    protected $translatorsScopeNote;
+    protected ?string $translatorsEnglishScopeNote = null;
 
-    /**
-     * @var string[]
-     */
-    protected $relatedRegistryNumbers = [];
+    protected ?string $translatorsScopeNote = null;
 
-    /**
-     * @var ConceptRelation[]
-     */
-    protected $conceptRelations = [];
+    protected array $relatedRegistryNumbers = [];
 
-    /**
-     * @var Term[]
-     */
-    protected $terms = [];
+    protected array $conceptRelations = [];
 
-    /**
-     * @return boolean
-     */
-    public function isPreferred()
+    protected array $terms = [];
+
+    public function isPreferred(): bool
     {
         return $this->preferred;
     }
 
-    /**
-     * @param boolean $preferred
-     */
-    public function setPreferred($preferred)
+    public function setPreferred(bool $preferred): void
     {
         $this->preferred = $preferred;
     }
 
-    /**
-     * @return string
-     */
-    public function getCasn1Name()
+    public function getCasn1Name(): ?string
     {
         return $this->casn1Name;
     }
 
-    /**
-     * @param string $casn1Name
-     */
-    public function setCasn1Name($casn1Name)
+    public function setCasn1Name(?string $casn1Name): void
     {
         $this->casn1Name = $casn1Name;
     }
 
-    /**
-     * @return string
-     */
-    public function getRegistryNumber()
+    public function getRegistryNumber(): ?string
     {
         return $this->registryNumber;
     }
 
-    /**
-     * @param string $registryNumber
-     */
-    public function setRegistryNumber($registryNumber)
+    public function setRegistryNumber(?string $registryNumber): void
     {
         $this->registryNumber = $registryNumber;
     }
 
-    /**
-     * @return string
-     */
-    public function getScopeNote()
+    public function getScopeNote(): ?string
     {
         return $this->scopeNote;
     }
 
-    /**
-     * @param string $scopeNote
-     */
-    public function setScopeNote($scopeNote)
+    public function setScopeNote(?string $scopeNote): void
     {
         $this->scopeNote = $scopeNote;
     }
 
-    /**
-     * @return string
-     */
-    public function getTranslatorsEnglishScopeNote()
+    public function getTranslatorsEnglishScopeNote(): ?string
     {
         return $this->translatorsEnglishScopeNote;
     }
 
-    /**
-     * @param string $translatorsEnglishScopeNote
-     */
-    public function setTranslatorsEnglishScopeNote($translatorsEnglishScopeNote)
+    public function setTranslatorsEnglishScopeNote(?string $translatorsEnglishScopeNote): void
     {
         $this->translatorsEnglishScopeNote = $translatorsEnglishScopeNote;
     }
 
-    /**
-     * @return string
-     */
-    public function getTranslatorsScopeNote()
+    public function getTranslatorsScopeNote(): ?string
     {
         return $this->translatorsScopeNote;
     }
 
-    /**
-     * @param string $translatorsScopeNote
-     */
-    public function setTranslatorsScopeNote($translatorsScopeNote)
+    public function setTranslatorsScopeNote(?string $translatorsScopeNote): void
     {
         $this->translatorsScopeNote = $translatorsScopeNote;
     }
 
-    /**
-     * @return \string[]
-     */
-    public function getRelatedRegistryNumbers()
+    public function getRelatedRegistryNumbers(): array
     {
         return $this->relatedRegistryNumbers;
     }
 
-    /**
-     * @param string $relatedRegistryNumber
-     */
-    public function addRelatedRegistryNumber($relatedRegistryNumber)
+    public function addRelatedRegistryNumber(string $relatedRegistryNumber): void
     {
         $this->relatedRegistryNumbers[] = $relatedRegistryNumber;
     }
 
-    /**
-     * @return ConceptRelation[]
-     */
-    public function getConceptRelations()
+    public function getConceptRelations(): array
     {
         return $this->conceptRelations;
     }
 
-    /**
-     * @param ConceptRelation $conceptRelation
-     */
-    public function addConceptRelation(ConceptRelation $conceptRelation)
+    public function addConceptRelation(ConceptRelation $conceptRelation): void
     {
         $this->conceptRelations[] = $conceptRelation;
     }
 
-    /**
-     * @return Term[]
-     */
-    public function getTerms()
+    public function getTerms(): array
     {
         return $this->terms;
     }
 
-    /**
-     * @param Term $term
-     */
-    public function addTerm(Term $term)
+    public function addTerm(Term $term): void
     {
         $this->terms[] = $term;
     }

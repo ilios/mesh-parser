@@ -3,7 +3,7 @@
 Fake MeSH descriptors set, for testing purposes.
 It contains all possible elements defined by the schema.
 -->
-<!DOCTYPE DescriptorRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20170101.dtd">
+<!DOCTYPE DescriptorRecordSet SYSTEM "https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20240101.dtd">
 <DescriptorRecordSet LanguageCode="eng">
     <DescriptorRecord DescriptorClass="1">
         <DescriptorUI>D000000</DescriptorUI>
@@ -135,6 +135,8 @@ It contains all possible elements defined by the schema.
                 <CASN1Name>a casn1 name</CASN1Name>
                 <RegistryNumber>00000AAAAA</RegistryNumber>
                 <ScopeNote>a scope note</ScopeNote>
+                <TranslatorsEnglishScopeNote>something in English.</TranslatorsEnglishScopeNote>
+                <TranslatorsScopeNote>i got nothing</TranslatorsScopeNote>
                 <RelatedRegistryNumberList>
                     <RelatedRegistryNumber>a related registry number</RelatedRegistryNumber>
                 </RelatedRegistryNumberList>
@@ -153,6 +155,9 @@ It contains all possible elements defined by the schema.
                             <Month>01</Month>
                             <Day>01</Day>
                         </DateCreated>
+                        <Abbreviation>IDK</Abbreviation>
+                        <SortVersion>lorem ipsum</SortVersion>
+                        <EntryVersion>foo bar</EntryVersion>
                         <ThesaurusIDlist>
                             <ThesaurusID>a thesaurus id</ThesaurusID>
                             <ThesaurusID>another thesaurus id</ThesaurusID>

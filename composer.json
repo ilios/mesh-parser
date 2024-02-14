@@ -6,7 +6,7 @@
     "Ilios",
     "MeSH"
   ],
-  "homepage": "http://iliosproject.org/",
+  "homepage": "https://iliosproject.org/",
   "license": "MIT",
   "authors": [
     {
@@ -16,13 +16,16 @@
     }
   ],
   "require": {
-    "php": ">=8.0"
+    "php": ">=8.2",
+    "ext-dom": "*",
+    "ext-xmlreader": "*"
   },
   "require-dev": {
     "mockery/mockery": "@stable",
     "phpunit/phpunit": "@stable",
     "squizlabs/php_codesniffer": "@stable",
-    "fakerphp/faker": "@stable"
+    "fakerphp/faker": "@stable",
+    "phpstan/phpstan": "^1.10"
   },
   "autoload": {
     "psr-4": {

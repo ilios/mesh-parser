@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- http://phpunit.de/manual/current/en/appendixes.configuration.html -->
 <phpunit
-        backupGlobals               = "false"
-        backupStaticAttributes      = "false"
-        colors                      = "true"
-        convertErrorsToExceptions   = "true"
-        convertNoticesToExceptions  = "true"
-        convertWarningsToExceptions = "true"
-        processIsolation            = "false"
-        stopOnFailure               = "false">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        backupGlobals="false"
+        colors="true"
+        processIsolation="false"
+        stopOnFailure="false"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd"
+        cacheDirectory=".phpunit.cache"
+        backupStaticProperties="false"
+>
+  <testsuites>
+    <testsuite name="Ilios MeSH Parser tests">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
 
-    <testsuites>
-        <testsuite name="Ilios MeSH Parser tests">
-            <directory>tests</directory>
-        </testsuite>
-    </testsuites>
+  <source>
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+  </source>
+
+  <!-- un-comment the following block before running code coverage tests -->
+  <!--
+  <coverage>
+    <report>
+      <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
+    </report>
+  </coverage>
+  -->
 </phpunit>

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
 
 /**
@@ -8,48 +10,39 @@ namespace Ilios\MeSH\Model;
  */
 class ConceptRelation
 {
-    use Nameable;
+    protected ?string $name = null;
 
-    /**
-     * Concept identifier.
-     * @var string
-     */
-    protected $concept1Ui;
+    protected string $concept1Ui;
 
-    /**
-     * Concept identifier.
-     * @var string
-     */
-    protected $concept2Ui;
+    protected string $concept2Ui;
 
-    /**
-     * @return string
-     */
-    public function getConcept1Ui()
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
+    }
+
+
+    public function getConcept1Ui(): string
     {
         return $this->concept1Ui;
     }
 
-    /**
-     * @param string $concept1Ui
-     */
-    public function setConcept1Ui($concept1Ui)
+    public function setConcept1Ui(string $concept1Ui): void
     {
         $this->concept1Ui = $concept1Ui;
     }
 
-    /**
-     * @return string
-     */
-    public function getConcept2Ui()
+    public function getConcept2Ui(): string
     {
         return $this->concept2Ui;
     }
 
-    /**
-     * @param string $concept2Ui
-     */
-    public function setConcept2Ui($concept2Ui)
+    public function setConcept2Ui(string $concept2Ui): void
     {
         $this->concept2Ui = $concept2Ui;
     }

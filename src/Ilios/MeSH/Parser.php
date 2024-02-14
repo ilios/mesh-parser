@@ -1,7 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH;
 
+use DateTime;
+use DateTimeZone;
+use DOMNode;
+use Exception;
 use Ilios\MeSH\Model\AllowableQualifier;
 use Ilios\MeSH\Model\Concept;
 use Ilios\MeSH\Model\ConceptRelation;
@@ -10,136 +16,119 @@ use Ilios\MeSH\Model\DescriptorSet;
 use Ilios\MeSH\Model\EntryCombination;
 use Ilios\MeSH\Model\Reference;
 use Ilios\MeSH\Model\Term;
+use XMLReader;
 
 /**
  * Class Parser
  * @package Ilios\MeSH
- * @link http://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20160101.dtd
+ * @link https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/xmlmesh/DTD/2024/nlmdescriptorrecordset_20240101.dtd
  */
 class Parser
 {
     // Elements
-    const ABBREVIATION = 'Abbreviation';
-    const ALLOWABLE_QUALIFIER = 'AllowableQualifier';
-    const ALLOWABLE_QUALIFIER_LIST = 'AllowableQualifiersList';
-    const ANNOTATION = 'Annotation';
-    const CASN1_NAME = 'CASN1Name';
-    const CONCEPT = 'Concept';
-    const CONCEPT1_UI = 'Concept1UI';
-    const CONCEPT2_UI = 'Concept2UI';
-    const CONCEPT_LIST = 'ConceptList';
-    const CONCEPT_NAME = 'ConceptName';
-    const CONCEPT_RELATION = 'ConceptRelation';
-    const CONCEPT_RELATION_LIST = 'ConceptRelationList';
-    const CONCEPT_UI = 'ConceptUI';
-    const CONSIDER_ALSO = 'ConsiderAlso';
-    const DATE_CREATED = 'DateCreated';
-    const DATE_ESTABLISHED = 'DateEstablished';
-    const DATE_REVISED = 'DateRevised';
-    const DAY = 'Day';
-    const DESCRIPTOR_NAME = 'DescriptorName';
-    const DESCRIPTOR_RECORD = 'DescriptorRecord';
-    const DESCRIPTOR_RECORD_SET = 'DescriptorRecordSet';
-    const DESCRIPTOR_REFERRED_TO = 'DescriptorReferredTo';
-    const DESCRIPTOR_UI = 'DescriptorUI';
-    const ECIN = 'ECIN';
-    const ECOUT = 'ECOUT';
-    const ENTRY_COMBINATION = 'EntryCombination';
-    const ENTRY_COMBINATION_LIST = 'EntryCombinationList';
-    const ENTRY_VERSION = 'EntryVersion';
-    const HISTORY_NOTE = 'HistoryNote';
-    const MONTH = 'Month';
-    const NLM_CLASSIFICATION_NUMBER = 'NLMClassificationNumber';
-    const ONLINE_NOTE = 'OnlineNote';
-    const PHARMACOLOGICAL_ACTION = 'PharmacologicalAction';
-    const PHARMACOLOGICAL_ACTION_LIST = 'PharmacologicalActionList';
-    const PREVIOUS_INDEXING = 'PreviousIndexing';
-    const PREVIOUS_INDEXING_LIST = 'PreviousIndexingList';
-    const PUBLIC_MESH_NOTE = 'PublicMeSHNote';
-    const QUALIFIER_NAME = 'QualifierName';
-    const QUALIFIER_REFERRED_TO = 'QualifierReferredTo';
-    const QUALIFIER_UI = 'QualifierUI';
-    const REGISTRY_NUMBER = 'RegistryNumber';
-    const RELATED_REGISTRY_NUMBER = 'RelatedRegistryNumber';
-    const RELATED_REGISTRY_NUMBER_LIST = 'RelatedRegistryNumberList';
-    const SCOPE_NOTE = 'ScopeNote';
-    const SEE_RELATED_DESCRIPTOR = 'SeeRelatedDescriptor';
-    const SEE_RELATED_LIST = 'SeeRelatedList';
-    const SORT_VERSION = 'SortVersion';
-    const STRING = 'String';
-    const TERM = 'Term';
-    const TERM_LIST = 'TermList';
-    const TERM_NOTE = 'TermNote';
-    const TERM_UI = 'TermUI';
-    const THESAURUS_ID = 'ThesaurusID';
-    const THESAURUS_ID_LIST = 'ThesaurusIDlist';
-    const TRANSLATORS_ENGLISH_SCOPE_NOTE = 'TranslatorsEnglishScopeNote';
-    const TRANSLATORS_SCOPE_NOTE = 'TranslatorsScopeNote';
-    const TREE_NUMBER = 'TreeNumber';
-    const TREE_NUMBER_LIST = 'TreeNumberList';
-    const YEAR = 'Year';
+    public const ABBREVIATION = 'Abbreviation';
+    public const ALLOWABLE_QUALIFIER = 'AllowableQualifier';
+    public const ANNOTATION = 'Annotation';
+    public const CASN1_NAME = 'CASN1Name';
+    public const CONCEPT = 'Concept';
+    public const CONCEPT1_UI = 'Concept1UI';
+    public const CONCEPT2_UI = 'Concept2UI';
+    public const CONCEPT_NAME = 'ConceptName';
+    public const CONCEPT_RELATION = 'ConceptRelation';
+    public const CONCEPT_UI = 'ConceptUI';
+    public const CONSIDER_ALSO = 'ConsiderAlso';
+    public const DATE_CREATED = 'DateCreated';
+    public const DATE_ESTABLISHED = 'DateEstablished';
+    public const DATE_REVISED = 'DateRevised';
+    public const DAY = 'Day';
+    public const DESCRIPTOR_NAME = 'DescriptorName';
+    public const DESCRIPTOR_RECORD = 'DescriptorRecord';
+    public const DESCRIPTOR_RECORD_SET = 'DescriptorRecordSet';
+    public const DESCRIPTOR_UI = 'DescriptorUI';
+    public const ECIN = 'ECIN';
+    public const ECOUT = 'ECOUT';
+    public const ENTRY_COMBINATION = 'EntryCombination';
+    public const ENTRY_VERSION = 'EntryVersion';
+    public const HISTORY_NOTE = 'HistoryNote';
+    public const MONTH = 'Month';
+    public const NLM_CLASSIFICATION_NUMBER = 'NLMClassificationNumber';
+    public const ONLINE_NOTE = 'OnlineNote';
+    public const PHARMACOLOGICAL_ACTION = 'PharmacologicalAction';
+    public const PREVIOUS_INDEXING = 'PreviousIndexing';
+    public const PUBLIC_MESH_NOTE = 'PublicMeSHNote';
+    public const QUALIFIER_NAME = 'QualifierName';
+    public const QUALIFIER_REFERRED_TO = 'QualifierReferredTo';
+    public const QUALIFIER_UI = 'QualifierUI';
+    public const REGISTRY_NUMBER = 'RegistryNumber';
+    public const RELATED_REGISTRY_NUMBER = 'RelatedRegistryNumber';
+    public const SCOPE_NOTE = 'ScopeNote';
+    public const SEE_RELATED_DESCRIPTOR = 'SeeRelatedDescriptor';
+    public const SORT_VERSION = 'SortVersion';
+    public const STRING = 'String';
+    public const TERM = 'Term';
+    public const TERM_NOTE = 'TermNote';
+    public const TERM_UI = 'TermUI';
+    public const THESAURUS_ID = 'ThesaurusID';
+    public const TRANSLATORS_ENGLISH_SCOPE_NOTE = 'TranslatorsEnglishScopeNote';
+    public const TRANSLATORS_SCOPE_NOTE = 'TranslatorsScopeNote';
+    public const TREE_NUMBER = 'TreeNumber';
+    public const YEAR = 'Year';
 
     // Attributes
-    const CONCEPT_PREFERRED_TERM_YN = 'ConceptPreferredTermYN';
-    const DESCRIPTOR_CLASS = 'DescriptorClass';
-    const IS_PERMUTED_TERM_YN = 'IsPermutedTermYN';
-    const LANGUAGE_CODE = 'LanguageCode';
-    const LEXICAL_TAG = 'LexicalTag';
-    const PREFERRED_CONCEPT_YN = 'PreferredConceptYN';
-    const RECORD_PREFERRED_TERM_YN = 'RecordPreferredTermYN';
-    const RELATION_NAME = 'RelationName';
-
-    /**
-     * @var \XMLReader
-     */
-    protected $reader;
+    public const CONCEPT_PREFERRED_TERM_YN = 'ConceptPreferredTermYN';
+    public const DESCRIPTOR_CLASS = 'DescriptorClass';
+    public const IS_PERMUTED_TERM_YN = 'IsPermutedTermYN';
+    public const LANGUAGE_CODE = 'LanguageCode';
+    public const LEXICAL_TAG = 'LexicalTag';
+    public const PREFERRED_CONCEPT_YN = 'PreferredConceptYN';
+    public const RECORD_PREFERRED_TERM_YN = 'RecordPreferredTermYN';
+    public const RELATION_NAME = 'RelationName';
+    protected XMLReader $reader;
 
     /**
      * Parser constructor.
      */
     public function __construct()
     {
-        $this->reader = new \XMLReader();
+        $this->reader = new XMLReader();
     }
 
     /**
      * Parses a given descriptors XML file into an object model.
-     * @param string $uri An URI pointing at that file.
+     * @param string $uri A URI pointing at that file.
      * @return DescriptorSet The set of parsed descriptors.
-     * @throws \Exception
+     * @throws Exception
      */
-    public function parse($uri)
+    public function parse(string $uri): DescriptorSet
     {
-        /* @var Concept */
+        /* @var Concept $currentConcept */
         $currentConcept = null;
-        /* @var AllowableQualifier */
+        /* @var AllowableQualifier $currentAllowableQualifier */
         $currentAllowableQualifier = null;
-        /* @var ConceptRelation */
+        /* @var ConceptRelation $currentConceptRelation */
         $currentConceptRelation = null;
-        /* @var Descriptor */
+        /* @var Descriptor $currentDescriptor */
         $currentDescriptor = null;
-        /* @var EntryCombination */
+        /* @var EntryCombination $currentEntryCombination */
         $currentEntryCombination = null;
-        /* @var Reference */
+        /* @var Reference $currentDescriptorReference */
         $currentDescriptorReference = null;
-        /* @var Reference */
-        $currentConceptReference = null;
-        /* @var Reference */
+        /* @var Reference $currentQualifierReference */
         $currentQualifierReference = null;
-        /* @var Term */
+        /* @var Term $currentTerm */
         $currentTerm = null;
 
         $descriptors = new DescriptorSet();
 
         $reader = $this->reader;
         if (!@$reader->open($uri)) {
-            throw new \Exception('XML reader failed to open '.$uri.'.');
-        };
+            throw new Exception('XML reader failed to open ' . $uri . '.');
+        }
 
         // start reading the XML File.
         while ($reader->read()) {
             $nodeType = $reader->nodeType;
-            if (\XMLReader::ELEMENT === $nodeType) {
+            if (XMLReader::ELEMENT === $nodeType) {
                 switch ($reader->name) {
                     case self::ABBREVIATION:
                         $abbreviation = $this->getNodeContents($reader);
@@ -174,11 +163,7 @@ class Parser
                         break;
                     case self::CONCEPT_NAME:
                         $name = $this->getStringNodeContents($reader->expand());
-                        if ($currentConceptReference) {
-                            $currentConceptReference->setName($name);
-                        } else {
-                            $currentConcept->setName($name);
-                        }
+                        $currentConcept->setName($name);
                         break;
                     case self::CONCEPT_RELATION:
                         $currentConceptRelation = new ConceptRelation();
@@ -189,11 +174,7 @@ class Parser
                         break;
                     case self::CONCEPT_UI:
                         $ui = $this->getNodeContents($reader);
-                        if ($currentConceptReference) {
-                            $currentConceptReference->setUi($ui);
-                        } else {
-                            $currentConcept->setUi($ui);
-                        }
+                        $currentConcept->setUi($ui);
                         break;
                     case self::CONSIDER_ALSO:
                         $also = $this->getNodeContents($reader);
@@ -241,9 +222,6 @@ class Parser
                         }
                         break;
                     case self::ECIN:
-                        $currentDescriptorReference = new Reference();
-                        $currentQualifierReference = new Reference();
-                        break;
                     case self::ECOUT:
                         $currentDescriptorReference = new Reference();
                         $currentQualifierReference = new Reference();
@@ -268,6 +246,7 @@ class Parser
                         $currentDescriptor->setOnlineNote($note);
                         break;
                     case self::PHARMACOLOGICAL_ACTION:
+                    case self::SEE_RELATED_DESCRIPTOR:
                         $currentDescriptorReference = new Reference();
                         break;
                     case self::PREVIOUS_INDEXING:
@@ -300,9 +279,6 @@ class Parser
                     case self::SCOPE_NOTE:
                         $note = $this->getNodeContents($reader);
                         $currentConcept->setScopeNote($note);
-                        break;
-                    case self::SEE_RELATED_DESCRIPTOR:
-                        $currentDescriptorReference = new Reference();
                         break;
                     case self::SORT_VERSION:
                         $version = $this->getNodeContents($reader);
@@ -348,7 +324,7 @@ class Parser
                         $currentDescriptor->addTreeNumber($number);
                         break;
                 }
-            } elseif (\XMLReader::END_ELEMENT === $nodeType) {
+            } elseif (XMLReader::END_ELEMENT === $nodeType) {
                 switch ($reader->name) {
                     case self::ALLOWABLE_QUALIFIER:
                         $currentAllowableQualifier->setQualifierReference($currentQualifierReference);
@@ -405,11 +381,11 @@ class Parser
     }
 
     /**
-     * @param \DOMNode $node
-     * @return \DateTime
-     * @throws \Exception
+     * @param DOMNode $node
+     * @return DateTime
+     * @throws Exception
      */
-    protected function getDateFromNode(\DOMNode $node)
+    protected function getDateFromNode(DOMNode $node): DateTime
     {
         $children = $node->childNodes;
         $ymd = [];
@@ -427,24 +403,24 @@ class Parser
             }
         }
         if (3 !== count($ymd)) {
-            throw new \Exception(
+            throw new Exception(
                 sprintf('Could not retrieve Year/Month/Day info from node "%s".', $node->nodeName)
             );
         }
-        $dt = new \DateTime();
-        $dt->setTimezone(new \DateTimeZone('UTC'));
-        $dt->setTime(0, 0, 0);
+        $dt = new DateTime();
+        $dt->setTimezone(new DateTimeZone('UTC'));
+        $dt->setTime(0, 0);
         $dt->setDate($ymd['year'], $ymd['month'], $ymd['day']);
 
         return $dt;
     }
 
     /**
-     * @param \DOMNode $node
+     * @param DOMNode $node
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
-    protected function getStringNodeContents(\DOMNode $node)
+    protected function getStringNodeContents(DOMNode $node): string
     {
         $children = $node->childNodes;
         $contents = false;
@@ -455,7 +431,7 @@ class Parser
             }
         }
         if (false === $contents) {
-            throw new \Exception(
+            throw new Exception(
                 sprintf('Node "%s" does not contain a child node of type "String".', $node->nodeName)
             );
         }
@@ -467,10 +443,10 @@ class Parser
      * Wrapper around <code>XMLReader::readString()</code> that trims any
      * whitespace off of node contents.
      *
-     * @param \XMLReader $reader
+     * @param XMLReader $reader
      * @return string
      */
-    protected function getNodeContents(\XMLReader $reader)
+    protected function getNodeContents(XMLReader $reader): string
     {
         return trim($reader->readString());
     }

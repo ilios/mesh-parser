@@ -15,10 +15,10 @@ jobs:
 
     strategy:
       matrix:
-        php-version: [8.0]
+        php-version: [8.2, 8.3]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Use PHP ${{ matrix.php-version }}
       uses: shivammathur/setup-php@v2
       with:
@@ -26,10 +26,10 @@ jobs:
         php-version: ${{ matrix.php-version }}
     - name: install dependencies
       run: composer install --no-interaction --prefer-dist
-    - name: lint src
-      run: bin/phpcs --standard=PSR2 src
-    - name: lint tests
-      run: bin/phpcs --standard=PSR2 tests
+    - name: lint PHP
+      run: bin/phpcs
+    - name: static code analysis
+      run: bin/phpstan
 
   tests:
     name: PHPUnit Tests
@@ -38,10 +38,10 @@ jobs:
 
     strategy:
       matrix:
-        php-version: [8.0]
+        php-version: [8.2, 8.3]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Use PHP ${{ matrix.php-version }}
       uses: shivammathur/setup-php@v2
       with:

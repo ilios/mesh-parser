@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
 
 /**
@@ -8,44 +10,26 @@ namespace Ilios\MeSH\Model;
  */
 class AllowableQualifier
 {
-    /**
-     * @var Reference
-     */
-    protected $qualifierReference;
+    protected Reference $qualifierReference;
 
-    /**
-     * @var string
-     */
-    protected $abbreviation;
+    protected string $abbreviation;
 
-    /**
-     * @return Reference
-     */
-    public function getQualifierReference()
+    public function getQualifierReference(): Reference
     {
         return $this->qualifierReference;
     }
 
-    /**
-     * @param Reference $reference
-     */
-    public function setQualifierReference(Reference $reference)
+    public function setQualifierReference(Reference $reference): void
     {
         $this->qualifierReference = $reference;
     }
 
-    /**
-     * @return string
-     */
-    public function getAbbreviation()
+    public function getAbbreviation(): string
     {
         return $this->abbreviation;
     }
 
-    /**
-     * @param string $abbreviation
-     */
-    public function setAbbreviation($abbreviation)
+    public function setAbbreviation(string $abbreviation): void
     {
         $this->abbreviation = $abbreviation;
     }

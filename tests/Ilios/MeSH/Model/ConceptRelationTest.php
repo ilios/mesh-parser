@@ -1,59 +1,44 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
+
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class ConceptRelationTest
+ *
  * @package Ilios\MeSH\Model
  */
-class ConceptRelationTest extends BaseTest
+#[CoversClass(ConceptRelation::class)]
+class ConceptRelationTest extends BaseTestCase
 {
-    /**
-     * @var ConceptRelation
-     */
-    protected $object;
+    protected ConceptRelation $object;
 
-    /**
-     * @inheritdoc
-     */
     public function setUp(): void
     {
         parent::setUp();
         $this->object = new ConceptRelation();
     }
 
-    /**
-     * @inheritdoc
-     */
     public function tearDown(): void
     {
         parent::tearDown();
         unset($this->object);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\ConceptRelation::getName
-     * @covers \Ilios\MeSH\Model\ConceptRelation::setName
-     */
-    public function testGetSetName()
+    public function testGetSetName(): void
     {
-        $this->basicSetTest($this->object, 'name', 'string');
+        $this->basicSetTest($this->object, 'name', 'string', true);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\ConceptRelation::getConcept1Ui
-     * @covers \Ilios\MeSH\Model\ConceptRelation::setConcept1Ui
-     */
-    public function testGetSetConcept1Ui()
+    public function testGetSetConcept1Ui(): void
     {
         $this->basicSetTest($this->object, 'concept1Ui', 'string');
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\ConceptRelation::getConcept2Ui
-     * @covers \Ilios\MeSH\Model\ConceptRelation::setConcept2Ui
-     */
-    public function testGetSetConcept2Ui()
+    public function testGetSetConcept2Ui(): void
     {
         $this->basicSetTest($this->object, 'concept2Ui', 'string');
     }

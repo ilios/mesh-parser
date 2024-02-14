@@ -1,50 +1,39 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ilios\MeSH\Model;
+
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Class DescriptorSetTest
+ *
  * @package Ilios\MeSH\Model
  */
-class DescriptorSetTest extends BaseTest
+#[CoversClass(DescriptorSet::class)]
+class DescriptorSetTest extends BaseTestCase
 {
-    /**
-     * @var DescriptorSet
-     */
-    protected $object;
+    protected DescriptorSet $object;
 
-    /**
-     * @inheritdoc
-     */
     public function setUp(): void
     {
         parent::setUp();
         $this->object = new DescriptorSet();
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\DescriptorSet::__construct
-     */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $this->assertEmpty($this->object->getDescriptors());
         $this->assertEmpty($this->object->getDescriptorUis());
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\DescriptorSet::setLanguageCode
-     * @covers \Ilios\MeSH\Model\DescriptorSet::getLanguageCode
-     */
-    public function testGetSetLanguageCode()
+    public function testGetSetLanguageCode(): void
     {
-        $this->basicSetTest($this->object, 'languageCode', 'string');
+        $this->basicSetTest($this->object, 'languageCode', 'string', true);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\DescriptorSet::addDescriptor
-     * @covers \Ilios\MeSH\Model\DescriptorSet::getDescriptors
-     */
-    public function testAddGetDescriptors()
+    public function testAddGetDescriptors(): void
     {
         $descriptor = new Descriptor();
         $descriptor->setUi('D0000001');
@@ -65,10 +54,7 @@ class DescriptorSetTest extends BaseTest
         $this->assertEquals($this->object->getDescriptors()[1], $descriptor3);
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\DescriptorSet::getDescriptorUis
-     */
-    public function testGetSetDescriptorUis()
+    public function testGetSetDescriptorUis(): void
     {
         $uis = ['D000001', 'D000002'];
         foreach ($uis as $ui) {
@@ -84,10 +70,7 @@ class DescriptorSetTest extends BaseTest
         $this->assertEmpty(array_diff($results, $uis));
     }
 
-    /**
-     * @covers \Ilios\MeSH\Model\DescriptorSet::getDescriptorByUi
-     */
-    public function testFindDescriptorByUi()
+    public function testFindDescriptorByUi(): void
     {
         $ui = 'D000001';
         $descriptor = new Descriptor();
