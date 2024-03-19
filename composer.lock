@@ -123,7 +123,7 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.6.7",
+            "version": "1.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
@@ -2101,7 +2101,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "mockery/mockery": 0,
+        "phpunit/phpunit": 0,
         "squizlabs/php_codesniffer": 0,
         "fakerphp/faker": 0
     },
