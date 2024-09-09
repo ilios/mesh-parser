@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- http://phpunit.de/manual/current/en/appendixes.configuration.html -->
-<phpunit
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        backupGlobals="false"
-        colors="true"
-        processIsolation="false"
-        stopOnFailure="false"
-        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd"
-        cacheDirectory=".phpunit.cache"
-        backupStaticProperties="false"
->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="false" colors="true" processIsolation="false" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd" cacheDirectory=".phpunit.cache" backupStaticProperties="false" failOnPhpunitDeprecation="true" displayDetailsOnPhpunitDeprecations="true">
   <testsuites>
     <testsuite name="Ilios MeSH Parser tests">
       <directory>tests</directory>
