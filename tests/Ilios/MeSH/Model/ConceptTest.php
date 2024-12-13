@@ -44,9 +44,9 @@ class ConceptTest extends BaseTestCase
         $this->basicSetTest($this->object, 'casn1Name', 'string', true);
     }
 
-    public function testGetSetRegistryNumber(): void
+    public function testAddGetRegistryNumbers(): void
     {
-        $this->basicSetTest($this->object, 'registryNumber', 'string', true);
+        $this->addTextToListTest($this->object, 'registryNumber');
     }
 
     public function testGetSetScopeNote(): void

@@ -270,7 +270,7 @@ class Parser
                         break;
                     case self::REGISTRY_NUMBER:
                         $number = $this->getNodeContents($reader);
-                        $currentConcept->setRegistryNumber($number);
+                        $currentConcept->addRegistryNumber($number);
                         break;
                     case self::RELATED_REGISTRY_NUMBER:
                         $number = $this->getNodeContents($reader);

@@ -165,14 +165,19 @@ EOL;
         $this->assertTrue($concept->isPreferred());
         $this->assertEquals('M0000001', $concept->getUi());
         $this->assertEquals('a casn1 name', $concept->getCasn1Name());
-        $this->assertEquals('00000AAAAA', $concept->getRegistryNumber());
+
+        $registryNumbers = $concept->getRegistryNumbers();
+        $this->assertEquals(2, count($registryNumbers));
+        $this->assertEquals('00000AAAAA', $registryNumbers[0]);
+        $this->assertEquals('11111BBBBB', $registryNumbers[1]);
+
         $this->assertEquals('a scope note', $concept->getScopeNote());
         $this->assertEquals('something in English.', $concept->getTranslatorsEnglishScopeNote());
         $this->assertEquals('i got nothing', $concept->getTranslatorsScopeNote());
 
-        $registryNumbers = $concept->getRelatedRegistryNumbers();
-        $this->assertEquals(1, count($registryNumbers));
-        $this->assertEquals('a related registry number', $registryNumbers[0]);
+        $relatedRegistryNumbers = $concept->getRelatedRegistryNumbers();
+        $this->assertEquals(1, count($relatedRegistryNumbers));
+        $this->assertEquals('a related registry number', $relatedRegistryNumbers[0]);
 
         $relations = $concept->getConceptRelations();
         $this->assertEquals(1, count($relations));
@@ -202,7 +207,7 @@ EOL;
         $this->assertFalse($concept->isPreferred());
         $this->assertEquals('M0000002', $concept->getUi());
         $this->assertEquals('another concept', $concept->getName());
-        $this->assertEquals('0', $concept->getRegistryNumber());
+        $this->assertCount(0, $concept->getRegistryNumbers());
 
         $relations = $concept->getConceptRelations();
         $this->assertEquals(1, count($relations));
