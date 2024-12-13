@@ -14,8 +14,6 @@ class Concept extends Reference
 
     protected ?string $casn1Name = null;
 
-    protected ?string $registryNumber = null;
-
     protected ?string $scopeNote = null;
 
     protected ?string $translatorsEnglishScopeNote = null;
@@ -27,6 +25,8 @@ class Concept extends Reference
     protected array $conceptRelations = [];
 
     protected array $terms = [];
+
+    protected array $registryNumbers = [];
 
     public function isPreferred(): bool
     {
@@ -46,16 +46,6 @@ class Concept extends Reference
     public function setCasn1Name(?string $casn1Name): void
     {
         $this->casn1Name = $casn1Name;
-    }
-
-    public function getRegistryNumber(): ?string
-    {
-        return $this->registryNumber;
-    }
-
-    public function setRegistryNumber(?string $registryNumber): void
-    {
-        $this->registryNumber = $registryNumber;
     }
 
     public function getScopeNote(): ?string
@@ -116,5 +106,15 @@ class Concept extends Reference
     public function addTerm(Term $term): void
     {
         $this->terms[] = $term;
+    }
+
+    public function getRegistryNumbers(): array
+    {
+        return $this->registryNumbers;
+    }
+
+    public function addRegistryNumber(string $registryNumber): void
+    {
+        $this->registryNumbers[] = $registryNumber;
     }
 }
