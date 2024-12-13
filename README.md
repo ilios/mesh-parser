@@ -3,7 +3,7 @@
 This PHP code library provides tools for extracting [Medical Subject Headings](https://www.nlm.nih.gov/mesh/meshhome.html) 
 (MeSH) descriptors and associated data from a given XML file into an object representation.
 
-It expects its input to be compliant with the 2023 or 2024 [MeSH DTDs](https://www.nlm.nih.gov/databases/download/mesh.html).
+It expects its input to be compliant with the 2024 or 2025 [MeSH DTDs](https://www.nlm.nih.gov/databases/download/mesh.html).
 
 ## Installation
 
