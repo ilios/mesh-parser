@@ -21,7 +21,8 @@ use XMLReader;
 /**
  * Class Parser
  * @package Ilios\MeSH
- * @link https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/xmlmesh/DTD/2024/nlmdescriptorrecordset_20240101.dtd
+ * @link https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20250101.dtd
+ * @link https://www.nlm.nih.gov/databases/dtd/nlmdescriptorrecordset_20260101.dtd
  */
 class Parser
 {
@@ -39,6 +40,7 @@ class Parser
     public const CONSIDER_ALSO = 'ConsiderAlso';
     public const DATE_CREATED = 'DateCreated';
     public const DATE_ESTABLISHED = 'DateEstablished';
+    public const DATE_INTRODUCED = 'DateIntroduced';
     public const DATE_REVISED = 'DateRevised';
     public const DAY = 'Day';
     public const DESCRIPTOR_NAME = 'DescriptorName';
@@ -50,6 +52,7 @@ class Parser
     public const ENTRY_COMBINATION = 'EntryCombination';
     public const ENTRY_VERSION = 'EntryVersion';
     public const HISTORY_NOTE = 'HistoryNote';
+    public const LAST_UPDATED = 'LastUpdated';
     public const MONTH = 'Month';
     public const NLM_CLASSIFICATION_NUMBER = 'NLMClassificationNumber';
     public const ONLINE_NOTE = 'OnlineNote';
@@ -192,6 +195,10 @@ class Parser
                         $date = $this->getDateFromNode($reader->expand());
                         $currentDescriptor->setDateEstablished($date);
                         break;
+                    case self::DATE_INTRODUCED:
+                        $date = $this->getDateFromNode($reader->expand());
+                        $currentDescriptor->setDateIntroduced($date);
+                        break;
                     case self::DATE_REVISED:
                         $date = $this->getDateFromNode($reader->expand());
                         $currentDescriptor->setDateRevised($date);
@@ -236,6 +243,10 @@ class Parser
                     case self::HISTORY_NOTE:
                         $note = $this->getNodeContents($reader);
                         $currentDescriptor->setHistoryNote($note);
+                        break;
+                    case self::LAST_UPDATED:
+                        $date = $this->getDateFromNode($reader->expand());
+                        $currentDescriptor->setLastUpdated($date);
                         break;
                     case self::NLM_CLASSIFICATION_NUMBER:
                         $number = $this->getNodeContents($reader);
