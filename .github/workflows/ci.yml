@@ -8,6 +8,10 @@ on:
   schedule:
     - cron: '34 4 * * 1' # weekly, on Thursday morning
 
+env:
+  #token is tied to Stefan's account on UCSF's SonarQube (type: project, name: mesh-parser)
+  UCSF_SQ_TK: sqp_78a7224c4580224b71bc035ca3cf1da3d6cd189d
+
 jobs:
   code_style:
     name: Code Style
@@ -45,9 +49,40 @@ jobs:
     - name: Use PHP ${{ matrix.php-version }}
       uses: shivammathur/setup-php@v2
       with:
-        coverage: none
+        coverage: pcov
         php-version: ${{ matrix.php-version }}
     - name: install dependencies
       run: composer install --no-interaction --prefer-dist
     - name: Run Tests
-      run: bin/phpunit tests
+      run: bin/phpunit tests --coverage-clover build/coverage.xml
+    - name: Archive Coverage Report
+      uses: actions/upload-artifact@v6
+      with:
+        name: coverage-output
+        path: build/coverage.xml
+        overwrite: true
+        retention-days: 1
+
+  sonarqube_scan:
+    name: Scan with UCSF SonarQube
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: tests
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0  # disable shallow clone for full access to code
+      - uses: actions/download-artifact@v7
+        with:
+          name: coverage-output
+      - run: ls -lh coverage.xml
+      - uses: sonarsource/sonarqube-scan-action@v7.0
+        env:
+          SONAR_TOKEN: ${{ env.UCSF_SQ_TK }}
+          SONAR_HOST_URL: https://sonarqube.ucsf.edu
+        with:
+          args: >
+            -Dsonar.projectKey=ilios_mesh-parser_3ecaf401-4c80-4abb-a3ef-8ceb5b2301b3
+            -Dsonar.php.coverage.reportPaths=coverage.xml
+            -Dsonar.sources=src
+            -Dsonar.tests=tests
