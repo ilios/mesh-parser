@@ -36,12 +36,22 @@ class DescriptorTest extends BaseTestCase
 
     public function testGetSetDateCreated(): void
     {
-        $this->basicSetTest($this->object, 'dateCreated', 'datetime');
+        $this->basicSetTest($this->object, 'dateCreated', 'datetime', true);
     }
 
     public function testGetSetDateRevised(): void
     {
         $this->basicSetTest($this->object, 'dateRevised', 'datetime', true);
+    }
+
+    public function testGetSetDateIntroduced(): void
+    {
+        $this->basicSetTest($this->object, 'dateIntroduced', 'datetime', true);
+    }
+
+    public function testGetSetLastUpdated(): void
+    {
+        $this->basicSetTest($this->object, 'lastUpdated', 'datetime', true);
     }
 
     public function testGetSetDateEstablished(): void
