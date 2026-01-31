@@ -14,11 +14,15 @@ class Descriptor extends Reference
 {
     protected string $class;
 
-    protected DateTime $dateCreated;
+    protected ?DateTime $dateCreated = null;
 
     protected ?DateTime $dateEstablished = null;
 
     protected ?DateTime $dateRevised = null;
+
+    protected ?DateTime $dateIntroduced = null;
+
+    protected ?DateTime $lastUpdated = null;
 
     protected array $allowableQualifiers = [];
 
@@ -56,12 +60,12 @@ class Descriptor extends Reference
         $this->class = $class;
     }
 
-    public function getDateCreated(): DateTime
+    public function getDateCreated(): ?DateTime
     {
         return $this->dateCreated;
     }
 
-    public function setDateCreated(DateTime $date): void
+    public function setDateCreated(?DateTime $date): void
     {
         $this->dateCreated = $date;
     }
@@ -74,6 +78,26 @@ class Descriptor extends Reference
     public function setDateRevised(?DateTime $date): void
     {
         $this->dateRevised = $date;
+    }
+
+    public function getDateIntroduced(): ?DateTime
+    {
+        return $this->dateIntroduced;
+    }
+
+    public function setDateIntroduced(?DateTime $date): void
+    {
+        $this->dateIntroduced = $date;
+    }
+
+    public function getLastUpdated(): ?DateTime
+    {
+        return $this->lastUpdated;
+    }
+
+    public function setLastUpdated(?DateTime $date): void
+    {
+        $this->lastUpdated = $date;
     }
 
     public function getDateEstablished(): ?DateTime

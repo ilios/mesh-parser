@@ -3,7 +3,7 @@
 This PHP code library provides tools for extracting [Medical Subject Headings](https://www.nlm.nih.gov/mesh/meshhome.html) 
 (MeSH) descriptors and associated data from a given XML file into an object representation.
 
-It expects its input to be compliant with the 2024 or 2025 [MeSH DTDs](https://www.nlm.nih.gov/databases/download/mesh.html).
+It expects its input to be compliant with the 2025 or 2026 [MeSH DTDs](https://www.nlm.nih.gov/databases/download/mesh.html).
 
 ## Installation
 
@@ -29,8 +29,8 @@ Use getter methods on this object and its subcomponents to traverse and process 
 require __DIR__ . '/vendor/autoload.php';
 
 // provide a URL or a local file path.
-//$uri = 'https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/xmlmesh/desc2024.xml';
-$uri = __DIR__ . '/desc2024.xml';
+//$uri = 'https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/xmlmesh/desc2026.xml';
+$uri = __DIR__ . '/desc2026.xml';
 
 // instantiate the parser and parse the input.
 $parser = new \Ilios\MeSH\Parser();
