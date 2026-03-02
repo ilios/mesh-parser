@@ -56,7 +56,7 @@ jobs:
     - name: Run Tests
       run: bin/phpunit tests --coverage-clover build/coverage.xml
     - name: Archive Coverage Report
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: coverage-output
         path: build/coverage.xml
