@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @package Ilios\MeSH\Model
  */
 #[CoversClass(Concept::class)]
-class ConceptTest extends BaseTestCase
+final class ConceptTest extends BaseTestCase
 {
     protected Concept $object;
 
