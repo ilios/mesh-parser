@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @package Ilios\MeSH
  */
 #[CoversClass(Parser::class)]
-class ParserTest extends TestCase
+final class ParserTest extends TestCase
 {
     protected Parser $parser;
 
@@ -25,7 +25,7 @@ class ParserTest extends TestCase
 
     protected function tearDown(): void
     {
-        unset($this->parser);
+        parent::tearDown();
     }
 
     public function testForInvalidInputUriFailure(): void

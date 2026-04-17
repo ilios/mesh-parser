@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @package Ilios\MeSH\Model
  */
 #[CoversClass(Reference::class)]
-class ReferenceTest extends BaseTestCase
+final class ReferenceTest extends BaseTestCase
 {
     protected Reference $object;
 
