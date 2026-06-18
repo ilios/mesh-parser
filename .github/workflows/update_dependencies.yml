@@ -1,5 +1,8 @@
 name: Update Dependencies
 
+permissions:
+  contents: read
+
 on:
   workflow_dispatch:
   schedule:
@@ -10,6 +13,8 @@ env:
 
 jobs:
   update:
+    permissions:
+      pull-requests: write
     name: Tests
     runs-on: ubuntu-latest
 
